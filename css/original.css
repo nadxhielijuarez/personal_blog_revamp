@@ -1,0 +1,357 @@
+
+@font-face {
+    font-family: 'Gallient';
+    src: url('../fonts/GallientRegular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}  
+
+.topnav{
+	overflow:hidden;
+	background-color:#592A2A;
+	margin-bottom: 2%;
+}
+
+.topnav a{
+	float: right;
+	display:block;
+	color:white;
+	text-align: center;
+	padding: 2rem 1rem 2rem 1rem;
+	text-decoration: none;
+	font-size: 1rem;
+	font-family: 'Roboto', sans-serif;
+}
+.topnav a:hover {
+  background-color: #874f4f;
+  color: white;
+}
+
+.topnav a.active {
+  background-color: #874f4f;
+  color: #592A2A;
+}
+
+.icon {
+	display: none;
+}
+
+
+@media screen and (max-width: 1040px) {
+  .icon {
+	float: right;
+	display: block;
+	color: white;
+	background-color: #592A2A;
+	border: none;
+	font-size: 2.5rem;
+  }
+
+  .icon:hover {
+	background-color: #874f4f;		
+  }
+
+  .topnav a {
+	display: none;
+  }
+
+  #HeadingContainer{
+	width:50%;
+
+}
+
+}
+
+.vertical-line{
+	border-left: 5px solid black;
+	display: block;
+}
+
+h1{
+	font-family: 'Cormorant Garamond', serif;
+	display:block;
+	font-size: clamp(2.5rem, 8vw, 10rem);
+	font-weight: 300;
+	line-height: 1.05;
+	margin: auto 3rem;
+	margin-top: 10%;
+	max-width: 95%;
+}
+
+@media (max-width: 1040px) {
+	h1 {
+		font-size: clamp(2rem, 9vw, 7rem);
+		margin: auto 1.5rem;
+		margin-top: 12%;
+	}
+}
+
+@media (max-width: 600px) {
+	h1 {
+		font-size: clamp(1.6rem, 11vw, 5rem);
+		margin: auto 1rem;
+		margin-top: 15%;
+		line-height: 1.1;
+	}
+}
+
+.Intro-section{
+	display:flex;
+	flex-direction:row;
+	align-items:stretch;
+	gap:1rem;
+}
+
+.Intro-section > * {
+	height:100%;
+}
+
+.Intro-column{
+	flex:1 1 0;
+	min-width:0;
+}
+
+.intro-row-650{
+	display:none;
+}
+
+.intro-row{
+	display-flex: row;
+	text-align: left;
+	margin-top:70px;
+	margin-left:50px;
+	font-size: large;
+	color:#564949;
+	font-family: 'Roboto';
+}
+
+@media(max-width: 650px){
+	.intro-row{
+		display:none;
+	}
+	.intro-row-650{
+		display:block;
+		text-align: left;
+		margin-top:70px;
+		margin-left:50px;
+		font-size: large;
+		color:#564949;
+		font-family: 'Roboto';
+	}
+}
+
+
+#HeadingContainer{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:flex-start;
+	gap:1rem;
+	padding:2rem 1rem;
+	margin-left:50px;
+	position:relative;
+	min-height:20rem;
+	width:calc(100% - 100px);
+	box-sizing:border-box;
+}
+
+@media (max-width: 1040px) {
+	#HeadingContainer {
+		margin-left:1rem;
+		padding:1.5rem 1rem;
+		width:calc(100% - 2rem);
+		min-height:15rem;
+	}
+}
+
+@media (max-width: 600px) {
+	#HeadingContainer {
+		margin-left:0.5rem;
+		padding:1rem;
+		width:calc(100% - 1rem);
+		min-height:12rem;
+		align-items:flex-start;
+	}
+}
+
+.IntroImg{
+	flex-grow: 1;
+	width: 100%;
+}
+
+@media (max-width: 320px) {
+	.IntroImg {
+		margin-top: 15%;
+	}
+}
+
+.Row-container{
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:center;
+	gap:1rem;
+	margin: 5% auto;
+	max-width: 1200px;
+	padding: 0 1rem;
+}
+
+.ShowCaseCard-container{
+	flex: 1 1 clamp(220px, 30%, 360px);
+	position: relative;
+	margin: 0.5rem;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+	max-width: 360px;
+	box-sizing: border-box;
+}
+
+.ShowCaseCard-container:hover{
+	opacity: 0.9;
+	transform: translateY(-4px) scale(1.02);
+}
+
+.ShowCaseCardImage{
+	width: 100%;
+	height: auto;
+	aspect-ratio: 20 / 25;
+	border-radius: 20px;
+	object-fit: cover;
+}
+
+.ShowCaseCardImage:hover{
+	transform: scale(1.03);
+}
+
+.ShowCaseCard-overlay{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-family: "Gallient";
+	font-size: clamp(1.8rem, 4vw, 3.5rem);
+	font-weight: 200;
+	color: #ffffff;
+	background-color: rgba(39, 35, 35, 0.64);
+	border-radius: 15px;
+	padding: 0.5rem 1rem;
+	white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+	.ShowCaseCard-container {
+		flex: 1 1 clamp(180px, 45%, 300px);
+		max-width: 300px;
+	}
+	.ShowCaseCard-overlay {
+		font-size: clamp(1.4rem, 4.5vw, 3rem);
+	}
+}
+
+@media (max-width: 600px) {
+	.Row-container{
+		flex-direction:column;
+		align-items:center;
+		gap:1rem;
+		margin: 2rem auto;
+	}
+	.ShowCaseCard-container{
+		flex: 1 1 90%;
+		max-width: 100%;
+		margin: 0.5rem 0;
+	}
+	.ShowCaseCard-overlay {
+		font-size: clamp(1.1rem, 5vw, 2rem);
+	}
+}
+
+
+.HobbiesSection-container{
+	margin: 8% auto;
+	width: 100%;
+	max-width: 1200px;
+	padding: 0 1rem;
+	box-sizing: border-box;
+}
+
+.HobbiesRow{
+	display:flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1rem;
+}
+
+.HobbyImg{
+	height: 90px;
+	max-width: 100%;
+	object-fit: contain;
+	display: block;
+	margin: 0 auto;
+}
+
+.CenteredTitles{
+	color: #545252;
+	font-family: "Gallient";
+	font-size: clamp(2rem, 4vw, 3.5rem);
+	text-align: center;
+	font-weight: 200;
+}
+
+.HobbySection{
+	margin: 2.5%;
+	flex: 1 1 clamp(180px, 25%, 300px);
+	min-width: 180px;
+	max-width: 310px;
+	box-sizing: border-box;
+}
+
+.HobbieSection-title {
+	font-family: 'Roboto', sans-serif;
+	font-size: clamp(1rem, 2vw, 1.5rem);
+	font-weight: 500;
+	color: #564949;
+	margin: 1rem auto;
+	text-align: center;
+}
+
+.HobbySection-paragraphs{
+	color: rgb(100, 96, 96);
+	font-family: "Quicksand", sans-serif;
+	font-weight: 500;
+	font-size: clamp(0.95rem, 2vw, 1.2rem);
+	margin: 10px;
+	width: auto;
+	max-width: 100%;
+	text-align: center;
+}
+
+.SectionTitles{
+	color: #ccd1d4;
+	font-family: "Gallient";
+	font-size: clamp(2.5rem, 6vw, 4.5rem);
+	text-align: center;
+	margin-top: 20%;
+	font-weight: 200;
+}
+
+@media (max-width: 780px) {
+	.HobbiesRow {
+		flex-direction: column;
+		align-items: center;
+	}
+	.HobbySection {
+		flex: 1 1 90%;
+		max-width: 90%;
+		margin: 0.5rem 0;
+	}
+}
+
+@media (max-width: 500px) {
+	.HobbiesSection-container {
+		margin: 5% auto;
+	}
+	.HobbyImg {
+		height: 70px;
+	}
+	.SectionTitles {
+		margin-top: 12%;
+	}
+}
+
+

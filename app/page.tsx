@@ -1,5 +1,5 @@
 import HobbiesSection from './components/HobbiesSection';
-import Carousel from './components/CardSection';
+import CardSection from './components/CardSection';
 import Intro from './components/Intro';
 import './css/original.css';
 import React, { JSX } from 'react';
@@ -10,7 +10,7 @@ export default function Home(): JSX.Element {
     <div className="home">
       <Navbar />
       <Intro />
-      <Carousel />
+      <CardSection />
       <HobbiesSection />
     </div>
   );

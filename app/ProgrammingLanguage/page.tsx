@@ -1,4 +1,4 @@
-import './programming_languages.css';
+import '../css/programming_languages.css';
 export default function ProgrammingLanguages() {
     return <div className = "ProgrammingLanguages">
 		<div className="progLangGrid">

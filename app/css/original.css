@@ -180,19 +180,10 @@ h1{
 	object-position: center;
 }
 
-.Resume{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 80vh;
-	padding: 2rem;
-}
-
-.Resume-placeholder{
-	max-width: 100%;
-	height: auto;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	border-radius: 8px;
+@media (max-width: 320px) {
+	.IntroImg {
+		margin-top: 15%;
+	}
 }
 
 .Row-container{

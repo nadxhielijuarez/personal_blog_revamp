@@ -1,0 +1,21 @@
+
+@font-face {
+    font-family: 'Gallient';
+    src: url('../fonts/GallientRegular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}  
+
+h2{
+    font-family: "Gallient", sans-serif;
+    font-weight: 300;
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #545252;
+}
+
+.ContentSquareLayout-ContentTitle{
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size: 1.25rem;
+    color: #545252;
+}

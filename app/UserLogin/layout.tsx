@@ -3,5 +3,8 @@ export default function UserLoginLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return <>
+  <h1>User Login Page</h1>
+  {children}
+  </>;
 }

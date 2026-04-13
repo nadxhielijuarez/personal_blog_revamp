@@ -6,5 +6,11 @@ type Props = {
 
 export default async function AuthPage({ params }: Props) {
   const { path } = await params;
-  return <AuthView path={path} />;
+  return (
+    <div>
+      <div>
+        <AuthView path={path} />
+      </div>
+    </div>
+  );
 }

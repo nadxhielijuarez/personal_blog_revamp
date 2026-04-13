@@ -2,6 +2,7 @@ import {
   RedirectToSignIn,
   SignedIn,
   UserButton,
+  SignedOut,
 } from '@neondatabase/neon-js/auth/react/ui';
 import React, { JSX } from 'react';
 
@@ -10,16 +11,7 @@ export default function Home(): JSX.Element {
   return (
     <>
       <SignedIn>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            minHeight: '100vh',
-            gap: '2rem',
-          }}
-        >
+        <div>
           <div style={{ textAlign: 'center' }}>
             <h1>Welcome!</h1>
             <p>You're successfully authenticated.</p>
@@ -27,7 +19,13 @@ export default function Home(): JSX.Element {
           </div>
         </div>
       </SignedIn>
-      <RedirectToSignIn />
+
+      <SignedOut>
+      <div>
+        <h1>User Login Page</h1>
+        <RedirectToSignIn />
+      </div>
+      </SignedOut>
     </>
   );
 }

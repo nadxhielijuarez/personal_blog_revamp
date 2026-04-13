@@ -13,5 +13,7 @@ type Props = {
 
 export default async function AccountPage({ params }: Props) {
   const { path } = await params;
-  return <AccountView path={path} />;
+  return <>
+  <AccountView path={path} /> 
+    </>;
 }

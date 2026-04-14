@@ -19,3 +19,12 @@ h2{
     font-size: 1.25rem;
     color: #545252;
 }
+
+
+.CreateNewLanding-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}

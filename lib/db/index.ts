@@ -1,3 +1,3 @@
 export { db } from "./client";
-export * from "./users";
+export * from "./user";
 

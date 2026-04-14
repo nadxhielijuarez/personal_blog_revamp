@@ -11,6 +11,8 @@ const authClient = createAuthClient(
   { adapter: BetterAuthReactAdapter() }
 );
 
+export { authClient };
+
 export function NeonAuthProvider({
   children,
 }: {

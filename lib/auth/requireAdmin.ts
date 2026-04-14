@@ -9,21 +9,15 @@ type SessionUser = {
 
 export async function requireAdminUser() {
   const { data: session, error } = await auth.getSession();
-  console.log(session);
-  console.log(error);
   if (error || !session?.user) {
-    // redirect("/OopsNotAdmin");
-    console.log(session);
-    console.log("No session found");
+    redirect("/OopsNotAdmin");
   }
 
   const user = session.user as SessionUser;
   const isAdmin = user.role === "admin" || user.role === "owner";
 
   if (!isAdmin) {
-    console.log(user);
-    console.log("User is not an admin");
-    // redirect("/OopsNotAdmin");
+    redirect("/OopsNotAdmin");
   }
 
   return user;

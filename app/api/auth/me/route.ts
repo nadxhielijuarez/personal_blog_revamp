@@ -9,7 +9,7 @@ export async function GET() {
   const { data, error } = await auth.getSession();
 
   if (process.env.NODE_ENV === "development") {
-    //console.log("[api/auth/me] getSession:", { data, error });
+    console.log("[api/auth/me] getSession:", { data, error });
   }
 
   return NextResponse.json({

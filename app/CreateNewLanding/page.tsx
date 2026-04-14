@@ -4,8 +4,11 @@ import AddContentSquare from "../images/addNewContent.png";
 import '../css/original.css';
 
 
+
 export default function CreateNewLanding(): JSX.Element {
     return <>
+
+    
     <div className="CreateNewLanding-container">
         <ShowCaseCard
             image={AddContentSquare}

@@ -22,7 +22,6 @@ export default function Home(): JSX.Element {
 
       <SignedOut>
       <div>
-        <h1>User Login Page</h1>
         <RedirectToSignIn />
       </div>
       </SignedOut>

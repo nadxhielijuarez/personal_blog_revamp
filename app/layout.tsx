@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./css/globals.css";
 import "@neondatabase/neon-js/ui/css";
-import { NeonAuthProvider } from "./providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +30,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <NeonAuthProvider>{children}</NeonAuthProvider>
+        {children}
       </body>
     </html>
   );

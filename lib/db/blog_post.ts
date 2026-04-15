@@ -1,4 +1,4 @@
-import { insertEntity } from "./client";
+import { insertEntity, db } from "./client";
 import type { CreateNewFormPayload } from "@/app/components/CreateNewForm";
 
 export type BlogPost = {
@@ -22,15 +22,19 @@ export function blogPostFromFormPayload(payload: CreateNewFormPayload): BlogPost
   };
 }
 
-export async function createBlogPost(blogPost: BlogPost) {
-  const { blog_post_title, blog_content, blog_image, created_by_user_id, tag_list } = blogPost;
-  const result = await insertEntity<BlogPost>("blog_post", {
-    date_published: new Date().toISOString(),
-    blog_post_title,
-    blog_content,
-    blog_image,
-    created_by_user_id,
-    tag_list,
-  });
-  return result;
+export async function createBlogPost(blogPost: BlogPost): Promise<BlogPost> {
+  const { date_published, blog_post_title, blog_content, blog_image, created_by_user_id, tag_list } = blogPost;
+  try {
+    const text = "INSERT INTO blog_post (date_published, blog_post_title, blog_content, blog_image, created_by_user_id, tag_list) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *";
+    const values = [date_published, blog_post_title, blog_content, blog_image, created_by_user_id, tag_list];
+    const rows = await db.query(text, values);
+    const [result] = rows ?? [];
+    if (!result) {
+      throw new Error("blog_post insert returned no rows.");
+    }
+    return result as BlogPost;
+  } catch (error) {
+    console.error(error);
+    throw new Error(`Failed to insert blog_post: ${error}`);
+  }
 }

@@ -1,3 +1,4 @@
+import "server-only";
 import { neon } from "@neondatabase/serverless";
 
 export type BaseEntity = {
@@ -5,13 +6,14 @@ export type BaseEntity = {
 };
 
 
-function getPostgresConnectionString(): string {
+export function getPostgresConnectionString(): string {
+  console.log(process.env.NEON_POSTGRES_URL);
   const url =
     process.env.NEON_POSTGRES_URL?.trim() ||
     process.env.NEON_POSTGRES_API_URL?.trim();
   if (!url) {
     throw new Error(
-      "Missing database connection string. Set one of: NEON_POSTGRES_URL, DATABASE_URL, or NEON_POSTGRES_API_URL in .env.local (Neon dashboard → Connection string)."
+      "Missing database connection string. Set one of: NEON_POSTGRES_URL or NEON_POSTGRES_API_URL in .env.local (Neon dashboard → Connection string)."
     );
   }
   return url;
@@ -51,6 +53,7 @@ export async function insertEntity<T extends BaseEntity>(table: string, entity: 
     const values = entries.map(([, value]) => value);
     const columnList = columns.join(", ");
     const placeholders = values.map((_, i) => `$${i + 1}`).join(", ");
+    console.log(`INSERT INTO ${table} (${columnList}) VALUES (${placeholders}) RETURNING *`);
     const text = `INSERT INTO ${table} (${columnList}) VALUES (${placeholders}) RETURNING *`;
     const rows = await db.query(text, values);
     const [result] = rows ?? [];

@@ -5,7 +5,7 @@ import React, { useCallback, useState } from "react";
 import UploadImage from "./UploadImage";
 import { uploadFiles } from "@/lib/upload_things/upload_thing";
 import "@/app/css/form_formatting.css";
-import AvailableTagsSection from "./AvailableTagsSection";
+import TagSection from "./TagSection";
 
 const TITLE_MAX = 200;
 const CONTENT_MAX = 10_000;
@@ -147,7 +147,7 @@ export default function CreateNewForm({
     </form>
 
 
-    <AvailableTagsSection tagType={formType} displayCreateNewTag={true} />
+    <TagSection tagType={formType} displayCreateNewTag={true} />
     </>
   );
 }

@@ -1,31 +1,68 @@
+"use client";
+
 import '@/app/css/create_new_content_formatting.css';
 import Image from 'next/image';
 import addNew from '@/app/images/AddNewContent2.png';
 import type { FormEvent } from 'react';
 import { useState } from 'react';
+import { createTagFromForm } from './actions/Tag.actions';
 
-export default function CreateNewTag() {
+const TAG_TITLE_MAX = 200;
+
+export type CreateNewTagPayload = {
+    tagTitle: string;
+    tagType: string;
+}
+
+type CreateNewTagProps = {
+    tagType: string[];
+}
+
+export default function CreateNewTag({ tagType }: CreateNewTagProps) {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
-    const [newTagName, setNewTagName] = useState("");
+    const [newTagTitle, setNewTagTitle] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [saveError, setSaveError] = useState<string | null>(null);
+    const [saveOk, setSaveOk] = useState(false);
 
     const openPopup = () => {
+        setSaveError(null);
+        setSaveOk(false);
         setIsPopupOpen(true);
     };
 
     const closePopup = () => {
         setIsPopupOpen(false);
-        setNewTagName("");
+        setNewTagTitle("");
     };
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const trimmedTagName = newTagName.trim();
-        if (!trimmedTagName) {
+        setSaveError(null);
+        setSaveOk(false);
+        const trimmedTagTitle = newTagTitle.trim().toLowerCase();
+        if (!trimmedTagTitle) {
+            setSaveError("Tag name is required.");
             return;
         }
-        // TODO: Replace with real create-tag action.
-        console.log("Creating new tag:", trimmedTagName);
-        closePopup();
+        if (trimmedTagTitle.length > TAG_TITLE_MAX) {
+            setSaveError(`Tag name must be ${TAG_TITLE_MAX} characters or fewer.`);
+            return;
+        }
+        const newTagPayload: CreateNewTagPayload = {
+            tagTitle: trimmedTagTitle,
+            tagType: tagType[0] ?? "",
+        };
+        try {
+            setIsSubmitting(true);
+            await createTagFromForm(newTagPayload);
+            setSaveOk(true);
+            closePopup();
+        } catch (error) {
+            setSaveError(error instanceof Error ? error.message : "Failed to save tag.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -47,20 +84,30 @@ export default function CreateNewTag() {
                             className="CreateNewTag-input"
                             type="text"
                             placeholder="Tag name"
-                            value={newTagName}
-                            onChange={(event) => setNewTagName(event.target.value)}
+                            value={newTagTitle}
+                            onChange={(event) => setNewTagTitle(event.target.value)}
                         />
                         <div className="CreateNewTag-actions">
-                            <button type="button" onClick={closePopup}>
+                            <button type="button" onClick={closePopup} disabled={isSubmitting}>
                                 Cancel
                             </button>
-                            <button type="submit" disabled={!newTagName.trim()}>
-                                Submit
+                            <button type="submit" disabled={isSubmitting || !newTagTitle.trim()}>
+                                {isSubmitting ? "Submitting..." : "Submit"}
                             </button>
                         </div>
+                        {saveError ? (
+                            <p className="CreateNewTag-error" role="alert">
+                                {saveError}
+                            </p>
+                        ) : null}
                     </form>
                 </div>
             )}
+            {saveOk ? (
+                <p className="CreateNewTag-success" role="status">
+                    Tag created.
+                </p>
+            ) : null}
         </div>
     )
 }

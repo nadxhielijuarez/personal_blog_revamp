@@ -7,15 +7,11 @@ export type BlogPost = {
   blog_post_title: string;
   blog_content: string;
   blog_image: string;
-  created_by_user_id: number;
+  created_by_user_id: string;
 };
 
 export function blogPostFromFormPayload(payload: CreateNewFormPayload): BlogPost {
-  const created_by_user_id = Number.parseInt(payload.userId ?? "", 10);
-  if (!Number.isFinite(created_by_user_id)) {
-    throw new Error("Missing or invalid user id for blog post.");
-  }
-
+  const created_by_user_id = payload.userId ?? "empty";
   return {
     blog_post_title: payload.title,
     date_published: new Date().toISOString(),

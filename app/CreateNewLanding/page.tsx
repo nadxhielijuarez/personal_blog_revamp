@@ -1,7 +1,7 @@
 import React, { JSX } from 'react';
 import ShowCaseCard from '../components/ShowCaseCard';
 import AddContentSquare from "../images/AddNewContent2.png";
-import '../css/content_square_layout.css';
+import '../css/create_new_content_formatting.css';
 
 
 export default function CreateNewLanding(): JSX.Element {

@@ -4,16 +4,10 @@ export type BaseEntity = {
   id?: number;
 };
 
-/**
- * Accepts common env names for the same Neon Postgres connection string.
- * - `DATABASE_URL` — typical on Vercel / many templates
- * - `NEON_POSTGRES_URL` — explicit Neon naming
- * - `NEON_POSTGRES_API_URL` — sometimes used in Neon docs / older env naming
- */
+
 function getPostgresConnectionString(): string {
   const url =
     process.env.NEON_POSTGRES_URL?.trim() ||
-    process.env.DATABASE_URL?.trim() ||
     process.env.NEON_POSTGRES_API_URL?.trim();
   if (!url) {
     throw new Error(

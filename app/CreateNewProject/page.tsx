@@ -3,5 +3,5 @@ import CreateNewProjectPageClient from "./CreateNewProjectPageClient";
 
 export default async function CreateNewProjectPage() {
   const user = await requireAdminUser();
-  return <CreateNewProjectPageClient userId={user.id ?? "emptyID"} />;
+  return <CreateNewProjectPageClient userId={user.id ?? ""} />;
 }

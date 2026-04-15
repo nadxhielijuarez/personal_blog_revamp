@@ -1,0 +1,121 @@
+@import "./gallient-font.css";
+
+/* Scoped to Learning Blog only — import this file from that page and wrap content in .learningBlogLayout */
+.learningBlogLayout h2 {
+  font-family: "Gallient", sans-serif;
+  font-weight: 300;
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #545252;
+}
+
+.ContentSquareLayout-ContentTitle{
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size: 1.25rem;
+    color: #545252;
+}
+
+.CreateNewLanding-container{
+    display: flex;
+}
+
+.ShowCaseCard-container:hover{
+	opacity: 0.9;
+	transform: translateY(-4px) scale(1.02);
+}
+
+.CreateNewLanding-card{
+	width: 100%;
+	border-radius: 20px;
+	object-fit: cover;
+    margin: 10rem;
+}
+
+.ShowCaseCardImage:hover{
+	transform: scale(1.03);
+}
+
+.CreateNewLanding-title-override{
+    font-family: "Gallient";
+    font-weight: 600;
+    font-size: 4rem;
+    color: #592A2A;
+    text-align: center;
+}
+
+.AvailableTagsSection-container{
+    outline: 1px solid #592A2A;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    font-family: "Cormorant Garamond", sans-serif;
+    font-weight: 300;
+    font-size: 1.25rem;
+    color: #545252;
+}
+
+.CreateNewTag-image{
+    height: 3rem;
+    width: auto;
+}
+
+.CreateNewTag-trigger{
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+}
+
+.CreateNewTag-popup-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.CreateNewTag-popup{
+    width: min(90vw, 420px);
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    font-family: "Quicksand", sans-serif;
+}
+
+.CreateNewTag-popup-title{
+    margin: 0;
+    font-family: "Quicksand", sans-serif;
+    color: #592A2A;
+}
+
+.CreateNewTag-input{
+    border: 1px solid #592A2A;
+    border-radius: 8px;
+    padding: 0.6rem 0.75rem;
+    font-size: 1rem;
+    font-family: "Quicksand", sans-serif;
+}
+
+.CreateNewTag-actions{
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}

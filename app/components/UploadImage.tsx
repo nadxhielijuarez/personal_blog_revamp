@@ -1,7 +1,7 @@
 "use client";
 
 import upload_image from "../images/upload_image.png";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { ChangeEvent, JSX } from "react";
 
 const uploadImageSrc =
@@ -17,6 +17,7 @@ export default function UploadImage({
   onFileChange,
 }: UploadImageProps): JSX.Element {
   const [previewUrl, setPreviewUrl] = useState(uploadImageSrc);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (!selectedFile) {
@@ -24,11 +25,11 @@ export default function UploadImage({
       return;
     }
 
-    const objectUrl = URL.createObjectURL(selectedFile);
-    setPreviewUrl(objectUrl);
+    const createdImageUrl = URL.createObjectURL(selectedFile);
+    setPreviewUrl(createdImageUrl);
 
     return () => {
-      URL.revokeObjectURL(objectUrl);
+      URL.revokeObjectURL(createdImageUrl);
     };
   }, [selectedFile]);
 
@@ -37,9 +38,15 @@ export default function UploadImage({
     onFileChange(file);
   };
 
+  const handleContainerClick = () => {
+    fileInputRef.current?.click();
+  };
+
   return (
-    <div className="UploadImage-container">
+    <div className="UploadImage-container" onClick={handleContainerClick}>
+      <img className="UploadImage-image" src={previewUrl} alt="Selected upload preview" />
       <input
+        ref={fileInputRef}
         className="UploadImage-input"
         type="file"
         accept="image/*"

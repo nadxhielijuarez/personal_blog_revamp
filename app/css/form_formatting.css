@@ -104,11 +104,6 @@
 .create-new-form__upload-wrap .UploadImage-input {  
   width: 100%;
   color: #fff;
-  height: 10rem;
-  background-image: url('../images/upload_image.png');
-  background-size: cover;
-
-  background-repeat: no-repeat;
 }
 
 .create-new-form__error {

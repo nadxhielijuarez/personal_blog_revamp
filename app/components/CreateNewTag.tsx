@@ -51,7 +51,7 @@ export default function CreateNewTag({ tagType }: CreateNewTagProps) {
         }
         const newTagPayload: CreateNewTagPayload = {
             tagTitle: trimmedTagTitle,
-            tagType: tagType[0] ?? "",
+            tagType: tagType,
         };
         try {
             setIsSubmitting(true);

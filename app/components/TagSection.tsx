@@ -9,6 +9,7 @@ import { fetchAllTags } from './actions/Tag.actions';
 type TagSectionProps = {
     tagType: string | string[];
     displayCreateNewTag: boolean;
+    onTagSelect?: (tagTitle: string) => void;
 }
 
 type TagView = {
@@ -17,20 +18,19 @@ type TagView = {
     tag_type: string;
 };
 
-export default function TagSection({ tagType, displayCreateNewTag }: TagSectionProps) {
+export default function TagSection({ tagType, displayCreateNewTag, onTagSelect }: TagSectionProps) {
     const [tags, setTags] = useState<TagView[]>([]);
     const [loadError, setLoadError] = useState<string | null>(null);
-    const normalizedTagType = Array.isArray(tagType) ? tagType : [tagType];
 
     useEffect(() => {
         let isMounted = true;
         const loadTags = async () => {
             try {
                 setLoadError(null);
-                const result = await fetchAllTags();
+                const allTags = await fetchAllTags();
+                const filteredTypeTags = allTags.filter((tag) => tag.tag_type === tagType);
                 if (isMounted) {
-                    console.log(result);
-                    setTags(result);
+                    setTags(filteredTypeTags);
                 }
             } catch (error) {
                 if (isMounted) {
@@ -42,16 +42,20 @@ export default function TagSection({ tagType, displayCreateNewTag }: TagSectionP
         return () => {
             isMounted = false;
         };
-    }, []);
+    }, [tagType]);
 
     return (
         <div className="TagSection-container">
             <h1>Available Tags</h1>
             {tags.map((tag) => (
-                <TagItem key={tag.id ?? `${tag.tag_title}-${tag.tag_type}`} tag={tag} />
+                <TagItem
+                    key={tag.id ?? `${tag.tag_title}-${tag.tag_type}`}
+                    tag={tag}
+                    onClick={onTagSelect}
+                />
             ))}
             {loadError ? <p role="alert">{loadError}</p> : null}
-            {displayCreateNewTag && <CreateNewTag tagType={normalizedTagType} />}
+            {displayCreateNewTag && <CreateNewTag tagType={tagType} />}
         </div>
     )
 }

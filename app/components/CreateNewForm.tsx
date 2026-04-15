@@ -1,7 +1,7 @@
 "use client";
 
 import { sanitizePlainText } from "@/lib/sanitizePlainText";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import UploadImage from "./UploadImage";
 import { uploadFiles } from "@/lib/upload_things/upload_thing";
 import "@/app/css/form_formatting.css";
@@ -18,6 +18,7 @@ export type CreateNewFormPayload = {
   uploadedImageUrl?: string;
   /** Present when parent passes signed-in user id (e.g. from server layout/page). */
   userId?: string;
+  selectedTags: string;
 };
 
 type CreateNewFormProps = {
@@ -37,7 +38,20 @@ export default function CreateNewForm({
   const [content, setContent] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [selectedTagTitle, setSelectedTagTitle] = useState<string | null>(null);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (!selectedTagTitle) {
+      return;
+    }
+    setSelectedTags((previous) =>
+      previous.includes(selectedTagTitle)
+        ? previous
+        : [...previous, selectedTagTitle]
+    );
+  }, [selectedTagTitle]);
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent<HTMLFormElement>) => {
@@ -75,12 +89,13 @@ export default function CreateNewForm({
         submittedAt: new Date().toISOString(),
         uploadedImageUrl,
         ...(userId ? { userId } : {}),
+        selectedTags: selectedTags.join(","),
       };
 
       onSubmit?.(payload);
       setIsSubmitting(false);
     },
-    [content, formType, onSubmit, selectedImage, title, userId]
+    [content, formType, onSubmit, selectedImage, selectedTags, title, userId]
   );
 
   return (
@@ -147,7 +162,12 @@ export default function CreateNewForm({
     </form>
 
 
-    <TagSection tagType={formType} displayCreateNewTag={true} />
+    <TagSection
+      tagType={formType}
+      displayCreateNewTag={true}
+      onTagSelect={setSelectedTagTitle}
+    />
+    {selectedTags.length > 0 ? <p>Selected tags: {selectedTags.join(", ")}</p> : null}
     </>
   );
 }

@@ -8,27 +8,29 @@ export type BlogPost = {
   blog_content: string;
   blog_image: string;
   created_by_user_id: string;
+  tag_list: string;
 };
 
 export function blogPostFromFormPayload(payload: CreateNewFormPayload): BlogPost {
-  const created_by_user_id = payload.userId ?? "empty";
   return {
     blog_post_title: payload.title,
     date_published: new Date().toISOString(),
     blog_content: payload.content,
     blog_image: payload.uploadedImageUrl ?? "",
-    created_by_user_id,
+    created_by_user_id: payload.userId ?? "empty",
+    tag_list: payload.selectedTags,
   };
 }
 
 export async function createBlogPost(blogPost: BlogPost) {
-  const { blog_post_title, blog_content, blog_image, created_by_user_id } = blogPost;
+  const { blog_post_title, blog_content, blog_image, created_by_user_id, tag_list } = blogPost;
   const result = await insertEntity<BlogPost>("blog_post", {
     date_published: new Date().toISOString(),
     blog_post_title,
     blog_content,
     blog_image,
     created_by_user_id,
+    tag_list,
   });
   return result;
 }

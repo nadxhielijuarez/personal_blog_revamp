@@ -7,28 +7,33 @@ import { uploadFiles } from "@/lib/upload_things/upload_thing";
 import "@/app/css/form_formatting.css";
 
 const TITLE_MAX = 200;
-const DESCRIPTION_MAX = 10_000;
+const CONTENT_MAX = 10_000;
 
 export type CreateNewFormPayload = {
   formType: string;
   title: string;
-  description: string;
+  content: string;
   submittedAt: string;
   uploadedImageUrl?: string;
+  /** Present when parent passes signed-in user id (e.g. from server layout/page). */
+  userId?: string;
 };
 
 type CreateNewFormProps = {
   formType: string;
+  /** Optional Better Auth / Neon user id from a Server Component parent. */
+  userId?: string;
   /** Called with a plain-text JSON-safe payload after successful client-side validation. */
   onSubmit?: (payload: CreateNewFormPayload) => void;
 };
 
 export default function CreateNewForm({
   formType,
+  userId,
   onSubmit,
 }: CreateNewFormProps) {
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [content, setContent] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,7 +44,7 @@ export default function CreateNewForm({
       setError(null);
 
       const safeTitle = sanitizePlainText(title, TITLE_MAX);
-      const safeDescription = sanitizePlainText(description, DESCRIPTION_MAX);
+      const safeContent = sanitizePlainText(content, CONTENT_MAX);
 
       if (!safeTitle) {
         setError("Please enter a title.");
@@ -65,15 +70,16 @@ export default function CreateNewForm({
       const payload: CreateNewFormPayload = {
         formType,
         title: safeTitle,
-        description: safeDescription,
+        content: safeContent,
         submittedAt: new Date().toISOString(),
         uploadedImageUrl,
+        ...(userId ? { userId } : {}),
       };
 
       onSubmit?.(payload);
       setIsSubmitting(false);
     },
-    [description, formType, onSubmit, selectedImage, title]
+    [content, formType, onSubmit, selectedImage, title, userId]
   );
 
   return (
@@ -110,18 +116,18 @@ export default function CreateNewForm({
       </div>
 
       <div className="create-new-form__field">
-        <label htmlFor="description" className="create-new-form__label">
+        <label htmlFor="content" className="create-new-form__label">
           {formType} content
         </label>
         <textarea
-          id="description"
-          name="description"
+          id="content"
+          name="content"
           rows={8}
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
           placeholder={`Enter ${formType.toLowerCase()} content`}
           className="create-new-form__textarea"
-          maxLength={DESCRIPTION_MAX}
+          maxLength={CONTENT_MAX}
         />
       </div>
 

@@ -6,7 +6,7 @@ import { extractRouterConfig } from "uploadthing/server";
 export const dynamic = "force-dynamic";
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
-  await requireAdminUser();
+  const user = await requireAdminUser();
   return (
     <div>
       <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />

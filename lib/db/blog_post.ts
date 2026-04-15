@@ -1,0 +1,35 @@
+import { insertEntity } from "./client";
+import type { CreateNewFormPayload } from "@/app/components/CreateNewForm";
+
+export type BlogPost = {
+  id?: number;
+  blog_post_title: string;
+  blog_content: string;
+  blog_image: string;
+  created_by_user_id: number;
+};
+
+export function blogPostFromFormPayload(payload: CreateNewFormPayload): BlogPost {
+  const created_by_user_id = Number.parseInt(payload.userId ?? "", 10);
+  if (!Number.isFinite(created_by_user_id)) {
+    throw new Error("Missing or invalid user id for blog post.");
+  }
+
+  return {
+    blog_post_title: payload.title,
+    blog_content: payload.content,
+    blog_image: payload.uploadedImageUrl ?? "",
+    created_by_user_id,
+  };
+}
+
+export async function createBlogPost(blogPost: BlogPost) {
+  const { blog_post_title, blog_content, blog_image, created_by_user_id } = blogPost;
+  const result = await insertEntity<BlogPost>("blog_posts", {
+    blog_post_title,
+    blog_content,
+    blog_image,
+    created_by_user_id,
+  });
+  return result;
+}

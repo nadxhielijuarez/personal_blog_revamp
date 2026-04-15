@@ -8,7 +8,6 @@ export default function CreateNewLanding(): JSX.Element {
   return (
     <>
       <div className="CreateNewLanding-container">
-
         <div className="CreateNewLanding-card">
             <div className="CreateNewLanding-title-override"> 
                 Create New Blog Post 

@@ -20,12 +20,17 @@ const authClient = createAuthClient(`${appOrigin}/api/auth`, {
 
 export { authClient };
 
+/** Must match the `app/auth-ui` segment so `RedirectToSignIn` and links hit real pages. */
+const AUTH_UI_BASE_PATH = "/auth-ui";
+
 export function NeonAuthProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <NeonAuthUIProvider authClient={authClient}>{children}</NeonAuthUIProvider>
+    <NeonAuthUIProvider authClient={authClient} basePath={AUTH_UI_BASE_PATH}>
+      {children}
+    </NeonAuthUIProvider>
   );
 }

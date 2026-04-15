@@ -4,7 +4,7 @@ import CreateNewForm, {
   type CreateNewFormPayload,
 } from "../components/CreateNewForm";
 import React, { useCallback, useState } from "react";
-import { createBlogPostFromForm } from "./actions";
+import { createBlogPostFromForm } from "../components/actions/BlogPost.actions";
 
 type Props = {
   userId: string;

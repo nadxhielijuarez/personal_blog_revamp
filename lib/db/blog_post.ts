@@ -1,5 +1,5 @@
-import { insertEntity, db } from "./client";
 import type { CreateNewFormPayload } from "@/app/components/CreateNewForm";
+import { db } from "./client";
 
 export type BlogPost = {
   id?: number;

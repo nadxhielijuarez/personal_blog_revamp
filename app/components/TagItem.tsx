@@ -11,8 +11,6 @@ type TagItemProps = {
 
 export default function TagItem({ tag, onClick }: TagItemProps) {
     const handleClick = () => {
-        // console.log(tag.tag_title);
-        // console.log(tag.tag_id);
         onClick?.(tag.tag_id);
     };
 

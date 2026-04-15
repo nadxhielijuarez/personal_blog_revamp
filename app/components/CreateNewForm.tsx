@@ -3,6 +3,7 @@
 import { sanitizePlainText } from "@/lib/sanitizePlainText";
 import React, { useCallback, useState } from "react";
 import UploadImage from "./UploadImage";
+import { uploadFiles } from "@/lib/upload_things/upload_thing";
 import "@/app/css/form_formatting.css";
 
 const TITLE_MAX = 200;
@@ -13,6 +14,7 @@ export type CreateNewFormPayload = {
   title: string;
   description: string;
   submittedAt: string;
+  uploadedImageUrl?: string;
 };
 
 type CreateNewFormProps = {
@@ -28,9 +30,11 @@ export default function CreateNewForm({
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
+    async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       setError(null);
 
@@ -42,16 +46,34 @@ export default function CreateNewForm({
         return;
       }
 
+      setIsSubmitting(true);
+      let uploadedImageUrl: string | undefined;
+      if (selectedImage) {
+        try {
+          const uploaded = await uploadFiles("imageUploader", {
+            files: [selectedImage],
+          });
+          uploadedImageUrl = uploaded[0]?.ufsUrl;
+        } catch (uploadError) {
+          console.error("Image upload failed:", uploadError);
+          setError("Image upload failed. Please try again.");
+          setIsSubmitting(false);
+          return;
+        }
+      }
+
       const payload: CreateNewFormPayload = {
         formType,
         title: safeTitle,
         description: safeDescription,
         submittedAt: new Date().toISOString(),
+        uploadedImageUrl,
       };
 
       onSubmit?.(payload);
+      setIsSubmitting(false);
     },
-    [description, formType, onSubmit, title]
+    [description, formType, onSubmit, selectedImage, title]
   );
 
   return (
@@ -83,7 +105,7 @@ export default function CreateNewForm({
           className="create-new-form__upload-wrap"
           aria-labelledby="upload-label"
         >
-          <UploadImage />
+          <UploadImage selectedFile={selectedImage} onFileChange={setSelectedImage} />
         </div>
       </div>
 
@@ -110,8 +132,8 @@ export default function CreateNewForm({
       ) : null}
 
       <div className="create-new-form__actions">
-        <button type="submit" className="create-new-form__submit">
-          Submit
+        <button type="submit" className="create-new-form__submit" disabled={isSubmitting}>
+          {isSubmitting ? "Submitting..." : "Submit"}
         </button>
       </div>
     </form>

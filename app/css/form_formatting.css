@@ -101,6 +101,16 @@
   object-position: center;
 }
 
+.create-new-form__upload-wrap .UploadImage-input {  
+  width: 100%;
+  color: #fff;
+  height: 10rem;
+  background-image: url('../images/upload_image.png');
+  background-size: cover;
+
+  background-repeat: no-repeat;
+}
+
 .create-new-form__error {
   margin: 0 0 1rem;
   padding: 0.5rem 0.65rem;
@@ -140,5 +150,11 @@
   outline: 3px solid #592a2a;
   border-radius: 4px;
   outline-offset: 2px;
+}
+
+.create-new-form__submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
 }
 

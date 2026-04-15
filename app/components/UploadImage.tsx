@@ -1,21 +1,17 @@
 "use client";
 
-import { UploadButton, UploadDropzone} from "@/lib/upload_things/upload_thing";
+import { UploadButton } from "@/lib/upload_things/upload_thing";
+import upload_image from "../images/upload_image.png";
 import type { JSX } from "react";
+
+const uploadImageSrc =
+  typeof upload_image === "string" ? upload_image : upload_image.src;
 
 export default function UploadImage(): JSX.Element {
   return (
     <>
-      {/* <UploadDropzone
-        endpoint="imageUploader"
-        onClientUploadComplete={(res) => {
-          console.log("file url", res[0]?.ufsUrl);
-        }}
-        onUploadError={(error: Error) => {
-          console.error("Error uploading file:", error);
-        }}
-      /> */}
-
+    <div className="UploadImage-container">
+        <img className="UploadImage-image" src={uploadImageSrc} alt="Upload Image" />
       <UploadButton
         endpoint="imageUploader"
         onClientUploadComplete={(res) => {
@@ -25,8 +21,9 @@ export default function UploadImage(): JSX.Element {
         }}
         onUploadError={(error: Error) => {
           console.error("Error uploading file:", error);
-        }}
+        }}        
       />
+    </div>
     </>
   );
 }

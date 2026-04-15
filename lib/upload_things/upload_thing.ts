@@ -7,6 +7,13 @@ import {
   
 
   
-  export const UploadButton = generateUploadButton<OurFileRouter>();
-  export const UploadDropzone = generateUploadDropzone<OurFileRouter>();
+  /** Must match `app/api/upload_thing/route.ts` (default helper URL is `/api/uploadthing`). */
+  const uploadThingUrl = "/api/upload_thing";
+
+  export const UploadButton = generateUploadButton<OurFileRouter>({
+    url: uploadThingUrl,
+  });
+  export const UploadDropzone = generateUploadDropzone<OurFileRouter>({
+    url: uploadThingUrl,
+  });
   

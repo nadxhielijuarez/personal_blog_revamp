@@ -2,6 +2,8 @@
 
 import { sanitizePlainText } from "@/lib/sanitizePlainText";
 import React, { useCallback, useState } from "react";
+import UploadImage from "./UploadImage";
+import "@/app/css/form_formatting.css";
 
 const TITLE_MAX = 200;
 const DESCRIPTION_MAX = 10_000;
@@ -53,47 +55,65 @@ export default function CreateNewForm({
   );
 
   return (
-    <form className="form-container" onSubmit={handleSubmit}>
-      <h1 className="form-title">Create New {formType}</h1>
+    <form className="create-new-form" onSubmit={handleSubmit}>
+      <h1 className="create-new-form__title">Create New {formType}</h1>
 
-      <label htmlFor="title" className="form-label">
-        {formType} Title:{" "}
-      </label>
-      <input
-        type="text"
-        id="title"
-        name="title"
-        autoComplete="off"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder={`${formType} Title`}
-        className="form-input"
-        maxLength={TITLE_MAX}
-      />
+      <div className="create-new-form__field">
+        <label htmlFor="title" className="create-new-form__label">
+          {formType} title
+        </label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          autoComplete="off"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder={`Enter ${formType.toLowerCase()} title`}
+          className="create-new-form__input"
+          maxLength={TITLE_MAX}
+        />
+      </div>
 
-      <label htmlFor="description" className="form-label">
-        {formType} Content:{" "}
-      </label>
-      <textarea
-        id="description"
-        name="description"
-        rows={6}
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        placeholder={`${formType} content`}
-        className="form-input"
-        maxLength={DESCRIPTION_MAX}
-      />
+      <div className="create-new-form__field create-new-form__field--upload">
+        <span className="create-new-form__label" id="upload-label">
+          Image
+        </span>
+        <div
+          className="create-new-form__upload-wrap"
+          aria-labelledby="upload-label"
+        >
+          <UploadImage />
+        </div>
+      </div>
+
+      <div className="create-new-form__field">
+        <label htmlFor="description" className="create-new-form__label">
+          {formType} content
+        </label>
+        <textarea
+          id="description"
+          name="description"
+          rows={8}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder={`Enter ${formType.toLowerCase()} content`}
+          className="create-new-form__textarea"
+          maxLength={DESCRIPTION_MAX}
+        />
+      </div>
 
       {error ? (
-        <p className="text-sm text-destructive" role="alert">
+        <p className="create-new-form__error" role="alert">
           {error}
         </p>
       ) : null}
 
-      <button type="submit" className="form-button">
-        Submit
-      </button>
+      <div className="create-new-form__actions">
+        <button type="submit" className="create-new-form__submit">
+          Submit
+        </button>
+      </div>
     </form>
   );
 }

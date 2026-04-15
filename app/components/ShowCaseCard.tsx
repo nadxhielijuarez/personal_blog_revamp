@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { StaticImageData } from "next/image";
+import styles from "./ShowCaseCard.module.css";
 
 type ShowCaseCardProps = {
   image: string | StaticImageData;

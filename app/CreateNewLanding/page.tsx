@@ -1,27 +1,40 @@
 import React, { JSX } from 'react';
 import ShowCaseCard from '../components/ShowCaseCard';
-import AddContentSquare from "../images/addNewContent.png";
-import '../css/original.css';
-
+import AddContentSquare from "../images/AddNewContent2.png";
+import '../css/content_square_layout.css';
 
 
 export default function CreateNewLanding(): JSX.Element {
-    return <>
+  return (
+    <>
+      <div className="CreateNewLanding-container">
 
-    
-    <div className="CreateNewLanding-container">
-        <ShowCaseCard
+        <div className="CreateNewLanding-card">
+            <div className="CreateNewLanding-title-override"> 
+                Create New Blog Post 
+            </div>            
+            <ShowCaseCard
             image={AddContentSquare}
-            title="Blog Post"
+            title=""
             routeLink="/CreateNewBlogPost"
-        />
+            />            
+        </div>
+        <div className="CreateNewLanding-card"> 
+            <div className="CreateNewLanding-title-override"> 
+            Create New Project 
+            </div>
         <ShowCaseCard
-            image={AddContentSquare}
-            title = 'Project'
-            routeLink="/CreateNewProject"
-        />
-    </div>
+          image={AddContentSquare}
+          title=""
+          routeLink="/CreateNewProject"
+        />            
+        </div>
+
+      </div>
     </>
-};
+  );
+}
+
+
 
 

@@ -12,7 +12,14 @@ import img6 from '../images/img6.png';
 
 export default function Resume(): JSX.Element {
   return (
+    // Source - https://stackoverflow.com/a/74577710
+// Posted by dreambold, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-04-16, License - CC BY-SA 4.0
+
     <div className="Resume">
+      <button className="btn content-download button-main button-scheme" href="resume/Nadxhieli_Juarez_Resume_v1.pdf" download="Nadxhieli_Juarez_Resume_v1.pdf" >
+        Download CV
+      </button>
       <ResumeYear year={2025} 
       month_data={ [{
         length : 12,

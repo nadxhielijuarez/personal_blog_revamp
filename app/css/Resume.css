@@ -115,22 +115,19 @@
     color: #fff;
 }
 
+.btn {
+	background-color: #592A2A;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-bottom: 2%;
+}
 
-@media (max-width: 900px) {
-	.ResumeYear-section {
-	  grid-template-columns: 1fr;
-	  min-height: auto;
-	}
-  
-	.ResumeYear-image {
-	  height: auto;
-	  max-height: 40vh;
-	}
-  
-	.ResumeYear-container {
-	  min-height: 55vh;
-	}
-  }
+.btn:hover {
+	background-color: #fff;
+	color: #592A2A;
+}
 
 @media (max-width: 900px) {
 	.ResumeYear-section {

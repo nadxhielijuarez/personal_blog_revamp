@@ -14,41 +14,101 @@ export default function Resume(): JSX.Element {
   return (
     <div className="Resume">
       <ResumeYear year={2025} 
-      title="Paycom - Software Developer III" 
-      description="Not sure how to describe things on here yet." 
-      achievements={[]} 
-      months_to_fill_in={12} 
+      month_data={ [{
+        length : 12,
+        job_title : 'Software Developer III',
+        company : 'Paycom',
+        location : 'Irving, TX',
+        duration_start : 'Aug. 2024',
+        duration_end : 'Jan. 2026',
+      }] } 
       Recent={true} 
       image={img1}
       />
 
-
-
-
   <ResumeYear year={2024} 
-    title="Paycom - Software Developer II" 
-      description="Not sure how to describe things on here yet." 
-      achievements={[]} 
-      months_to_fill_in={12} 
+      month_data={
+        [{length : 12,
+          job_title : 'Software Developer II',
+          company : 'Paycom',
+          location : 'Irving, Texas',
+          duration_start : 'Jun. 2023',
+          duration_end : 'Aug. 2024',
+        }]
+      } 
       Recent={false}
       image={img2}
       />
 
 
   <ResumeYear year={2023} 
-    title="Paycom - Software Developer II" 
-      description="Not sure how to describe things on here yet." 
-      achievements={[]} 
-      months_to_fill_in={6} 
+      month_data={
+        [{length : 5,
+          job_title : 'Software Developer II',
+          company : 'Paycom',
+          location : 'Irving, Texas',
+          duration_start : 'Jun. 2023',
+          duration_end : 'Aug. 2023',
+        },
+          {length : 1,
+            job_title : '',
+            company : '',
+            location : '',
+            duration_start : '',
+            duration_end : '',
+          },
+          {length : 6,
+            job_title : 'Undergrad TA',
+            company : 'Texas A&M University',
+            location : 'College Station, Texas',
+            duration_start : 'Jan. 2023',
+            duration_end : 'May. 2023',
+          }
+        ]} 
       Recent={false}
       image={img6}
       />
 
   <ResumeYear year={2022} 
-    title="Paycom - Software Developer I" 
-      description="Not sure how to describe things on here yet." 
-      achievements={[]} 
-      months_to_fill_in={2} 
+      month_data={
+          [{
+            filled : true,
+            length : 2,
+            job_title : 'Software Engineering Intern (QA automation)',
+            company : 'Roku',
+            location : 'Austin, TX',
+            duration_start : 'May 2022',
+            duration_end : 'August 2022',
+          },
+            {
+              filled : false,
+              length : 2,
+              job_title : '',
+              company : '',
+              location : '',
+              duration_start : '',
+              duration_end : '',
+
+            },
+          {
+            filled : true,
+            length : 4,
+            job_title : 'Software Developer (Part-time)',
+            company : 'Centennial Arts',
+            location : 'Bryan, Tx',
+            duration_start : 'Sept. 2021',
+            duration_end : 'Feb. 2022',
+          },
+          {
+            filled : false,
+            length : 4,
+            job_title : '',
+            company : '',
+            location : '',
+            duration_start : '',
+            duration_end : '',
+          }
+        ]} 
       Recent={false}
       image={img1}
     />
@@ -57,29 +117,88 @@ export default function Resume(): JSX.Element {
     title="Paycom - Software Developer I" 
       description="Not sure how to describe things on here yet." 
       achievements={[]} 
-      months_to_fill_in={12} 
+      month_data={ [
+        {
+          filled : true,
+          length : 7,
+          job_title : 'Software Engineering Intern (co-op)',
+          company : 'WilliamsRDM',
+          location : 'Fort Worth, Tx',
+          duration_start : 'Jan. 2021',
+          duration_end : 'Jul. 2021',
+        },
+        {
+          filled : true,
+          length : 1,
+          job_title : 'Student IT',
+          company : 'Texas A&M University Veterinary Medical Diagnostic Lab',
+          location : 'Bryan, Tx',
+          duration_start : 'Jul. 2021',
+          duration_end : 'Sept. 2021',
+        },
+          {
+          filled : true,
+          length : 4,
+          job_title : 'Software Developer (Part-time)',
+          company : 'Centennial Arts',
+          location : 'Bryan, Tx',
+          duration_start : 'Sept. 2021',
+          duration_end : 'Feb. 2022',
+        },
+      ] } 
       Recent={false}
       image={img5}
     />
   
   <ResumeYear year={2020} 
-    title="Paycom - Software Developer I" 
-      description="Not sure how to describe things on here yet." 
-      achievements={[]} 
-      months_to_fill_in={12} 
+      month_data={ [
+        {
+          filled : true,
+          length : 5,
+          job_title : 'Owner',
+          company : ' CarpentryByNad',
+          location : 'Bryan, Texas',
+          duration_start : 'Aug. 2020',
+          duration_end : 'Dec. 2020',
+        },
+        {
+          filled : true,
+          length : 3,
+          job_title : 'Free-Lance Web Developer',
+          company : 'Freelance',
+          location : 'Bryan, Tx',
+          duration_start : 'May. 2020',
+          duration_end : 'Jul. 2020',
+        },
+        {
+          filled : true,
+          length : 5,
+          job_title : 'Energy Data Analyst (Student)',
+          company : 'TAMU Engineering Extension - Energy Systems Lab',
+          location : 'Bryan, Tx',
+          duration_start : 'May. 2020',
+          duration_end : 'Oct. 2020',
+        },
+      ] } 
       Recent={false}
       image={img2}
     />
 
 <ResumeYear year={2019} 
-    title="Paycom - Software Developer I" 
-      description="Not sure how to describe things on here yet." 
-      achievements={[]} 
-      months_to_fill_in={12} 
+      month_data={ [
+        {
+          filled : true,
+          length : 4,
+          job_title : 'Energy Data Analyst (Student)',
+          company : 'TAMU Engineering Extension - Energy Systems Lab',
+          location : 'Bryan, Tx',
+          duration_start : 'Jan 2019.',
+          duration_end : 'May. 2020',
+        },
+      ] } 
       Recent={false}
       image={img4}
     />
-
 
 
 

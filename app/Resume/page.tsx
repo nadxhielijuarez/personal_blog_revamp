@@ -39,7 +39,7 @@ export default function Resume(): JSX.Element {
     title="Paycom - Software Developer II" 
       description="Not sure how to describe things on here yet." 
       achievements={[]} 
-      months_to_fill_in={12} 
+      months_to_fill_in={6} 
       Recent={false}
       image={img6}
       />
@@ -48,7 +48,7 @@ export default function Resume(): JSX.Element {
     title="Paycom - Software Developer I" 
       description="Not sure how to describe things on here yet." 
       achievements={[]} 
-      months_to_fill_in={12} 
+      months_to_fill_in={2} 
       Recent={false}
       image={img1}
     />

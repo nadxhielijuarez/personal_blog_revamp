@@ -58,6 +58,8 @@ export default function LearningBlogPageClient({ posts }: LearningBlogPageClient
         displayCreateNewTag={false}
         onTagSelect={handleTagSelectForFilter}
       />
+
+      <div className="BlogCardDisplay-container">
       {visiblePosts.map((post) => (
         <BlogCardDisplay
           key={post.postKey}
@@ -66,9 +68,10 @@ export default function LearningBlogPageClient({ posts }: LearningBlogPageClient
           imageTitle={post.blog_post_title}
           contentTitle={post.blog_post_title}
           tags={post.displayTags}
-          DatePosted={new Date(post.date_published).toLocaleDateString()}
-        />
-      ))}
+            DatePosted={new Date(post.date_published).toLocaleDateString()}
+          />
+        ))}
+      </div>
     </>
   );
 }

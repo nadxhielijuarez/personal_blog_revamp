@@ -24,10 +24,20 @@ export default function HobbiesSection(): JSX.Element {
         />
 
         <Hobbie
+          title="Running"
+          subtitle="Runner's high is the best feeling ever. Highly recommend it, great way to turn your brain off & de-stress."
+          thumbnail="https://img.icons8.com/?size=100&id=39712&format=png&color=000000"
+        />
+
+
+        <Hobbie
           title="Hiking"
           subtitle="I love nature! I try to explore new trails and enjoy the peacefulness of the outdoors."
           thumbnail="https://img.icons8.com/ios-filled/100/trekking.png"
         />
+
+      
+
 
         <Hobbie
           title="Code"
@@ -38,15 +48,16 @@ export default function HobbiesSection(): JSX.Element {
 
       <div className="HobbiesRow">
         <Hobbie
-          title="Art (Medium - Oil on Canvas)"
-          subtitle="I hardly have the time to paint lately, but it's a lot of fun to get immersed into a new project here and there."
-          thumbnail="https://img.icons8.com/ios/2x/easel.png"
+          title="Travel"
+          subtitle="Even if its just a weekend trip to visit family, I travel as much as I can. Its a great way to stay connected with family and friends.
+          Also, try new things if I can."
+          thumbnail="https://img.icons8.com/?size=100&id=zV84ogIhFVFL&format=png&color=000000"
         />
 
         <Hobbie
-          title="Carpentry/DIYs"
-          subtitle="I love carpentry; it's like putting together a puzzle, with pieces that just kind of unfold themselves along the way. I genuinely enjoy the freedom of crafting something tangible."
-          thumbnail="https://img.icons8.com/dotty/2x/circular-saw.png"
+          title="Foodie - Restruants"
+          subtitle="I really enjoy a nice restaurant meal. Plus if its fine dining, its a great way to treat yourself."
+          thumbnail="https://img.icons8.com/?size=100&id=88539&format=png&color=000000"
         />
       </div>
     </section>

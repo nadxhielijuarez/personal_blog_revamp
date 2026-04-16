@@ -39,20 +39,20 @@ export default function CreateNewForm({
   const [content, setContent] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
-  const [selectedTagTitle, setSelectedTagTitle] = useState<string | null>(null);
+  const [SelectedTagId, setSelectedTagId] = useState<string | null>(null);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    if (!selectedTagTitle) {
+    if (!SelectedTagId) {
       return;
     }
     setSelectedTags((previous) =>
-      previous.includes(selectedTagTitle)
+      previous.includes(SelectedTagId)
         ? previous
-        : [...previous, selectedTagTitle]
+        : [...previous, SelectedTagId]
     );
-  }, [selectedTagTitle]);
+  }, [SelectedTagId]);
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent<HTMLFormElement>) => {
@@ -140,16 +140,6 @@ export default function CreateNewForm({
 
 
         <BlogEditor onChange={setContent} />
-        {/* <textarea
-          id="content"
-          name="content"
-          rows={8}
-          value={content} 
-          onChange={(e) => setContent(e.target.value)}
-          placeholder={`Enter ${formType.toLowerCase()} content`}
-          className="create-new-form__textarea"
-          maxLength={CONTENT_MAX}
-        /> */}
       </div>
 
       {error ? (
@@ -169,7 +159,7 @@ export default function CreateNewForm({
     <TagSection
       tagType={formType}
       displayCreateNewTag={true}
-      onTagSelect={setSelectedTagTitle}
+      onTagSelect={setSelectedTagId}
     />
     {selectedTags.length > 0 ? <p>Selected tags: {selectedTags.join(", ")}</p> : null}
     </>

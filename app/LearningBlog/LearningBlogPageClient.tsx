@@ -18,11 +18,25 @@ type LearningBlogPageClientProps = {
   posts: LearningBlogPostRow[];
 };
 
+/** TagItem passes `tag.tag_id` here; TagSection types it as string only. */
+function tagSelectArgToId(raw: string): number | null {
+  const value = raw as unknown;
+  if (typeof value === "number" && Number.isInteger(value)) {
+    return value;
+  }
+  const parsed = Number.parseInt(String(raw), 10);
+  return Number.isInteger(parsed) ? parsed : null;
+}
+
 export default function LearningBlogPageClient({ posts }: LearningBlogPageClientProps) {
   /** Unique tag ids used to filter posts (toggle on pill click). */
   const [filterBlogByTagID, setFilterBlogByTagID] = useState<number[]>([]);
 
-  const handleTagIdToggle = useCallback((tagId: number) => {
+  const handleTagSelectForFilter = useCallback((raw: string) => {
+    const tagId = tagSelectArgToId(raw);
+    if (tagId === null) {
+      return;
+    }
     setFilterBlogByTagID((previous) =>
       previous.includes(tagId) ? previous.filter((id) => id !== tagId) : [...previous, tagId]
     );
@@ -42,7 +56,7 @@ export default function LearningBlogPageClient({ posts }: LearningBlogPageClient
       <TagSection
         tagType="Blog Post"
         displayCreateNewTag={false}
-        onTagSelectId={handleTagIdToggle}
+        onTagSelect={handleTagSelectForFilter}
       />
       {visiblePosts.map((post) => (
         <BlogCardDisplay

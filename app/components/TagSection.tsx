@@ -9,6 +9,8 @@ import { fetchAllTags } from './actions/Tag.actions';
 type TagSectionProps = {
     tagType: string | string[];
     displayCreateNewTag: boolean;
+    /** When set and non-empty, tags are filtered by these ids instead of by `tagType`. */
+    tagIDs?: number[];
     onTagSelect?: (tagTitle: string) => void;
 }
 

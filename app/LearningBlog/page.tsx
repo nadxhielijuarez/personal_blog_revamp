@@ -1,12 +1,13 @@
 import React from 'react';
-import learning_blog_placeholder from '../images/NextJs_learning1.jpeg';
 import BlogCardDisplay from '../components/BlogCardDisplay';
 import '../css/article_project_landing.css';
 import Image from 'next/image';
 import blog_image from '../images/blog_image.png';
 import TagSection from '../components/TagSection';
+import { getAllBlogPosts } from '@/lib/db/blog_post';
 
-export default function LearningBlog() {
+export default async function LearningBlog() {
+    const posts = await getAllBlogPosts();
     return <> 
         <div className="blogTitle">
             <div className="blogTitle-column">
@@ -27,13 +28,18 @@ export default function LearningBlog() {
             displayCreateNewTag={false}
             />
 
-
-        <BlogCardDisplay
-            image={learning_blog_placeholder}
-            imageTitle="Learning Blog Placeholder"
-            contentTitle="First Post: My Learning Journey with Next.js"
-            tags={['Next.js', 'React', 'Tailwind CSS', 'TypeScript']}
-            DatePosted="2026-04-15"
-        />
+        {posts.map((post) => (
+            <BlogCardDisplay
+                key={post.id ?? `${post.blog_post_title}-${post.date_published}`}
+                image={post.blog_image}
+                imageTitle={post.blog_post_title}
+                contentTitle={post.blog_post_title}
+                tags={post.tag_list
+                    .split(",")
+                    .map((tag) => tag.trim())
+                    .filter(Boolean)}
+                DatePosted={new Date(post.date_published).toLocaleDateString()}
+            />
+        ))}
     </>
 }

@@ -38,3 +38,14 @@ export async function createBlogPost(blogPost: BlogPost): Promise<BlogPost> {
     throw new Error(`Failed to insert blog_post: ${error}`);
   }
 }
+
+export async function getAllBlogPosts(): Promise<BlogPost[]> {
+  try {
+    const text = "SELECT * FROM blog_post ORDER BY date_published DESC";
+    const rows = await db.query(text);
+    return (rows ?? []) as BlogPost[];
+  } catch (error) {
+    console.error(error);
+    throw new Error(`Failed to fetch blog_posts: ${error}`);
+  }
+}

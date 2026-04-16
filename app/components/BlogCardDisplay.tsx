@@ -9,7 +9,6 @@ type BlogCardDisplay = {
     contentTitle: string;
     tags?: string[];
     routeLink?: string;
-    DatePosted?: string;
 };
 
 export default function BlogCardDisplay({
@@ -18,7 +17,6 @@ export default function BlogCardDisplay({
     contentTitle,
     tags = [],
     routeLink,
-    DatePosted,
 }: BlogCardDisplay)
 {
     const imageSrc = typeof image === "string" ? image : image.src;
@@ -26,7 +24,6 @@ export default function BlogCardDisplay({
         <div className="BlogCardDisplay">
             <img className="BlogCardDisplayImage" src={imageSrc}  alt={imageTitle} />
             <div className= "BlogCardDisplay-ContentTitle">{contentTitle}</div>
-            <div className= "BlogCardDisplay-DatePosted">{DatePosted}</div>
             <CardTagList tags={tags} className="BlogCardDisplay-Tags" />
         </div>
     );

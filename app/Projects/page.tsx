@@ -27,6 +27,7 @@ export default function Projects() {
         image={learning_blog_placeholder}
         imageTitle="Learning Blog Placeholder"
         contentTitle="My Personal Website!"
+        tags={['Next.js', 'React', 'Tailwind CSS', 'TypeScript']}
     />
     </>
 }

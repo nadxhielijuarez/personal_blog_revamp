@@ -50,7 +50,7 @@ export default function HobbiesSection(): JSX.Element {
         <Hobbie
           title="Travel"
           subtitle="Even if its just a weekend trip to visit family, I travel as much as I can. Its a great way to stay connected with family and friends.
-          Also, try new things if I can."
+          Also, try new things and explore as many new places as I can."
           thumbnail="https://img.icons8.com/?size=100&id=zV84ogIhFVFL&format=png&color=000000"
         />
 

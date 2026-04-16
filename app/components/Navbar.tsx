@@ -1,9 +1,10 @@
 import React, { JSX } from 'react';
 // import { FaBars } from 'react-icons/fa';
 import Link from 'next/link';
+import '../css/original.css';
+
 
 export default function Navbar(): JSX.Element {
-
   return (
     <div className="topnav" id="myTopnav">
       <Link href="/">Home</Link>

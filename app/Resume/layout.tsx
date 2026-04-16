@@ -9,7 +9,7 @@ export default function RootLayout({
     children: React.ReactNode;
   }): JSX.Element {
     return (
-        <div>
+        <div className="Resume-container">
             <Navbar />
             {children}
         </div>

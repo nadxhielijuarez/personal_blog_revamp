@@ -46,8 +46,8 @@
 }
 
 .TagSection-container{
-    outline: 1px solid #885053;
-    background-color: #885053;
+    outline: 1px solid #874f4f;
+    background-color: #874f4f;
     padding: 10px;
     border-radius: 25px;
     margin: 10px;
@@ -140,7 +140,6 @@
     align-items: center;
     justify-content: center;
     max-width: 100%;
-    border: 1px solid #592A2A;
     border-radius: 10px;
     padding: 0;
     background-color: #592A2A;
@@ -154,6 +153,6 @@
 }
 
 .tag-item-container:hover{
-    background-color: #874f4f;
+    background-color: #290300;
     transform: translateY(-2px) scale(1.03);
 }

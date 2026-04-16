@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React, { JSX } from 'react';
-import '../css/original.css';
+import '../css/Resume.css';
 import resume_section_placeholder from '../images/Nadxhieli_Juarez_Resume_Placeholder.png';
 
 export default function Resume(): JSX.Element {

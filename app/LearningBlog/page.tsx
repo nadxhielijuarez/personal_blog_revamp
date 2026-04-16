@@ -1,6 +1,6 @@
 import React from 'react';
 import learning_blog_placeholder from '../images/NextJs_learning1.jpeg';
-import ContentSquareLayout from '../components/ContentSquareLayout';
+import BlogCardDisplay from '../components/BlogCardDisplay';
 import '../css/article_project_landing.css';
 import Image from 'next/image';
 import blog_image from '../images/blog_image.png';
@@ -28,10 +28,12 @@ export default function LearningBlog() {
             />
 
 
-        <ContentSquareLayout
+        <BlogCardDisplay
             image={learning_blog_placeholder}
             imageTitle="Learning Blog Placeholder"
             contentTitle="First Post: My Learning Journey with Next.js"
+            tags={['Next.js', 'React', 'Tailwind CSS', 'TypeScript']}
+            DatePosted="2026-04-15"
         />
     </>
 }

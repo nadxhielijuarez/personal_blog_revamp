@@ -2,7 +2,7 @@
 
 import '@/app/css/create_new_content_formatting.css';
 import Image from 'next/image';
-import addNew from '@/app/images/AddNewContent2.png';
+import addNew from '@/app/images/AddNewContent.png';
 import type { FormEvent } from 'react';
 import { useState } from 'react';
 import { createTagFromForm } from './actions/Tag.actions';

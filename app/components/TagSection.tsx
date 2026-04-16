@@ -46,7 +46,6 @@ export default function TagSection({ tagType, displayCreateNewTag, onTagSelect }
 
     return (
         <div className="TagSection-container">
-            <h1>Available Tags</h1>
             {tags.map((tag) => (
                 <TagItem
                     key={tag.id ?? `${tag.tag_title}-${tag.tag_type}`}

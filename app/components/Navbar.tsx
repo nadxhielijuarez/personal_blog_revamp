@@ -9,7 +9,6 @@ export default function Navbar(): JSX.Element {
       <Link href="/">Home</Link>
       <Link href="/Resume">Resume</Link>
       <Link href="/Projects">My Projects</Link>
-      <Link href="/ProgrammingLanguage">Programming Languages</Link>
       <Link href="/LearningBlog">Learning Blog</Link>
       <button className="icon">
         {/* <FaBars /> */}

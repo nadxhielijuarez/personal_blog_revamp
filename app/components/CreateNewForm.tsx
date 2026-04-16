@@ -6,6 +6,7 @@ import UploadImage from "./UploadImage";
 import { uploadFiles } from "@/lib/upload_things/upload_thing";
 import "@/app/css/form_formatting.css";
 import TagSection from "./TagSection";
+import BlogEditor from "./TextEditorComponent";
 
 const TITLE_MAX = 200;
 const CONTENT_MAX = 10_000;
@@ -136,16 +137,19 @@ export default function CreateNewForm({
         <label htmlFor="content" className="create-new-form__label">
           {formType} content
         </label>
-        <textarea
+
+
+        <BlogEditor onChange={setContent} />
+        {/* <textarea
           id="content"
           name="content"
           rows={8}
-          value={content}
+          value={content} 
           onChange={(e) => setContent(e.target.value)}
           placeholder={`Enter ${formType.toLowerCase()} content`}
           className="create-new-form__textarea"
           maxLength={CONTENT_MAX}
-        />
+        /> */}
       </div>
 
       {error ? (

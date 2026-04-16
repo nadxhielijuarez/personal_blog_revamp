@@ -1,7 +1,7 @@
 import React from 'react';
 import learning_blog_placeholder from '../images/NextJs_learning1.jpeg';
 import ContentSquareLayout from '../components/ContentSquareLayout';
-import '../css/content_square_layout.css';
+import '../css/article_project_landing.css';
 
 export default function LearningBlog() {
 

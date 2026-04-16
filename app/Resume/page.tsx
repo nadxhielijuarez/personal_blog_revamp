@@ -17,9 +17,13 @@ export default function Resume(): JSX.Element {
 // Retrieved 2026-04-16, License - CC BY-SA 4.0
 
     <div className="Resume">
-      <button className="btn content-download button-main button-scheme" href="resume/Nadxhieli_Juarez_Resume_v1.pdf" download="Nadxhieli_Juarez_Resume_v1.pdf" >
+      <a
+        className="btn content-download button-main button-scheme"
+        href="/Nadxhieli_Juarez_Website_Resume.pdf"
+        download="Nadxhieli_Juarez_Website_Resume.pdf"
+      >
         Download CV
-      </button>
+      </a>
       <ResumeYear year={2025} 
       month_data={ [{
         length : 12,
@@ -76,7 +80,7 @@ export default function Resume(): JSX.Element {
           }
         ]} 
       Recent={false}
-      image={img6}
+      image={img5}
       />
 
   <ResumeYear year={2022} 
@@ -157,7 +161,7 @@ export default function Resume(): JSX.Element {
         },
       ] } 
       Recent={false}
-      image={img5}
+      image={img2}
     />
   
   <ResumeYear year={2020} 
@@ -191,7 +195,7 @@ export default function Resume(): JSX.Element {
         },
       ] } 
       Recent={false}
-      image={img2}
+      image={img5}
     />
 
 <ResumeYear year={2019} 
@@ -207,7 +211,7 @@ export default function Resume(): JSX.Element {
         },
       ] } 
       Recent={false}
-      image={img4}
+      image={img1}
     />
 
 

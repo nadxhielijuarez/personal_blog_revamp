@@ -20,10 +20,10 @@ type ResumeMonthProps = {
       >
         {showText ? (
             <div className="ResumeMonth-text">
-            <div>{job_title}</div>
-            <div>{company}</div>
-            <div>{location}</div>
-            <div>{duration_start} - {duration_end}</div>
+            <div className="ResumeMonth-text-job_title">{job_title}</div>
+            <div className="ResumeMonth-text-company">{company}</div>
+            <div className="ResumeMonth-text-location">{location}</div>
+            <div className="ResumeMonth-text-duration">{duration_start} - {duration_end}</div>
             </div>
         ) : null}
       </div>

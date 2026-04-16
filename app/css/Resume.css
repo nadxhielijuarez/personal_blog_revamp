@@ -42,7 +42,7 @@
 	padding: 0;
 	box-sizing: border-box;
     border-left: 5px solid #ffffff;
-    border-bottom: 5px solid #ffffff;
+	border-bottom: 5px solid #ffffff;
 }
 
 .ResumeYear-months{
@@ -64,8 +64,6 @@
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	padding: 2rem;
-	box-sizing: border-box;
 }
 
 .ResumeYear-year{
@@ -73,6 +71,7 @@
 	font-family: "Cormorant Garamond", serif;
 	font-size: clamp(2rem, 6vw, 5rem);
 	line-height: 1;
+	margin-left: 2%;
 }
 
 .ResumeMonth-container{
@@ -86,3 +85,69 @@
 .ResumeMonth-container--filled{
     background-color: #592a2a;
 }
+
+.ResumeMonth-text{
+	margin-top: 5%;
+	margin-left: 2%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.ResumeMonth-text:hover{
+	background-color:rgb(253, 247, 247);
+}
+
+.ResumeMonth-text-job_title{
+	font-family: "Cormorant Garamond", serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.ResumeMonth-text-company{
+    font-size: 1rem;
+    color: #fff;
+}
+
+.ResumeMonth-text-duration{
+    font-size: 0.8rem;
+    color: #fff;
+}
+
+
+@media (max-width: 900px) {
+	.ResumeYear-section {
+	  grid-template-columns: 1fr;
+	  min-height: auto;
+	}
+  
+	.ResumeYear-image {
+	  height: auto;
+	  max-height: 40vh;
+	}
+  
+	.ResumeYear-container {
+	  min-height: 55vh;
+	}
+  }
+
+@media (max-width: 900px) {
+	.ResumeYear-section {
+		grid-template-columns: 42% 58%; /* keep image as left column */
+		min-height: auto;
+	  }
+	.ResumeYear-container{
+		border-left-width: 3px;
+		border-bottom-width: 3px;
+		height: 900px;
+	}
+
+	.ResumeMonth-text {
+		margin-left: 4%;
+		gap: 0.15rem;	
+		margin-top: 10%;
+		margin-bottom: 2%;
+	}
+  }
+

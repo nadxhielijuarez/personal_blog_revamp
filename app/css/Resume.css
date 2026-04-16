@@ -4,10 +4,10 @@
 
 .Resume{
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 80vh;
-	padding: 2rem;
+    flex-direction: column;
+	width: 100%;
+	min-height: 100vh;
+	padding: 0;
 }
 
 .Resume-placeholder{
@@ -17,19 +17,67 @@
 	border-radius: 8px;
 }
 
-.yearResume-section{
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
+.ResumeYear-section{
+	display: grid;
+	grid-template-columns: 50% 50%;
+	width: 100%;
+	min-height: 100vh;
+	align-items: stretch;
 }
 
-.yearResume-container{
-	max-width: 100%;
-	height: auto;
+.ResumeYear-image{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.ResumeYear-container{
+	width: 100%;
+	height: 100%;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	border-radius: 8px;
     color: #fff;
-    
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 3rem 1fr;
+	align-items: stretch;
+	justify-content: flex-start;
+	padding: 0;
+	box-sizing: border-box;
+    border-left: 5px solid #ffffff;
+    border-bottom: 5px solid #ffffff;
 }
 
+.ResumeYear-months{
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-template-rows: 1fr;
+	gap: 0;
+}
+
+.ResumeYear-content{
+	margin-left: 0;
+	max-width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: 2rem;
+	box-sizing: border-box;
+}
+
+.ResumeYear-year{
+	margin-top: auto;
+	font-family: "Cormorant Garamond", serif;
+	font-size: clamp(2rem, 6vw, 5rem);
+	line-height: 1;
+}
+
+.ResumeMonth-container{
+	width: 100%;
+	height: 100%;
+    background-color: #592a2a;
+    margin: 0;
+    padding: 0;
+}

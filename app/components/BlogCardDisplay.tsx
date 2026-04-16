@@ -4,6 +4,7 @@ import type { StaticImageData } from "next/image";
 import CardTagList from './CardTagList';
 
 type BlogCardDisplay = {
+    id?: number;
     image: string | StaticImageData;
     imageTitle: string;
     contentTitle: string;
@@ -11,8 +12,8 @@ type BlogCardDisplay = {
     routeLink?: string;
     DatePosted?: string;
 };
-
 export default function BlogCardDisplay({
+    id,
     image, 
     imageTitle,
     contentTitle,
@@ -21,8 +22,9 @@ export default function BlogCardDisplay({
     DatePosted,
 }: BlogCardDisplay)
 {
+    const resolvedRouteLink = routeLink ?? (id ? `/BlogArticlePage?postId=${id}` : undefined);
     const imageSrc = typeof image === "string" ? image : image.src;
-    const SqureContent = (
+    const squareContent = (
         <div className="BlogCardDisplay">
             <img className="BlogCardDisplayImage" src={imageSrc}  alt={imageTitle} />
             <div className= "BlogCardDisplay-ContentTitle">{contentTitle}</div>
@@ -32,7 +34,7 @@ export default function BlogCardDisplay({
     );
     return (
         <div className="BlogCardDisplay-container">
-            {routeLink ? <Link href={routeLink}>{SqureContent}</Link> : SqureContent}
+            {resolvedRouteLink ? <Link href={resolvedRouteLink}>{squareContent}</Link> : squareContent}
         </div>
     );
 }

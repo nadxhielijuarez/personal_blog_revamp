@@ -50,6 +50,7 @@ export default async function LearningBlog() {
         {posts.map((post) => (
             <BlogCardDisplay
                 key={post.id ?? `${post.blog_post_title}-${post.date_published}`}
+                id={post.blog_post_id}
                 image={post.blog_image}
                 imageTitle={post.blog_post_title}
                 contentTitle={post.blog_post_title}

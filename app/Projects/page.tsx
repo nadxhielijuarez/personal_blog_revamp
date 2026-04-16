@@ -4,9 +4,10 @@ import ProjectSquareLayout from '../components/ProjectSquareLayout';
 import Image from 'next/image';
 import blog_image from '../images/projects_image.png';
 import TagSection from '../components/TagSection';
+import {getAllProjects} from '@/lib/db/project';
 
-export default function Projects() {
-    
+export default async function Projects() {
+    const projects = await getAllProjects();
     return <>
         <div className="blogTitle">
         <div className="blogTitle-column">
@@ -22,12 +23,19 @@ export default function Projects() {
         </div>
     </div>
 
-
-    <ProjectSquareLayout
-        image={learning_blog_placeholder}
-        imageTitle="Learning Blog Placeholder"
-        contentTitle="My Personal Website!"
-        tags={['Next.js', 'React', 'Tailwind CSS', 'TypeScript']}
-    />
+    {
+        projects.map((project) =>
+            <ProjectSquareLayout
+                key={project.id}
+                image={project.project_image}
+                contentTitle={project.project_title}
+                tags={project.tag_list
+                    .split(",")
+                    .map((tag) => tag.trim())
+                    .filter(Boolean)}
+            />
+        )
+    }
+   
     </>
 }

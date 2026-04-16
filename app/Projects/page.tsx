@@ -7,6 +7,10 @@ import TagSection from '../components/TagSection';
 import {getAllProjects} from '@/lib/db/project';
 import {getAllTags} from '@/lib/db/tag';
 
+function stripHtml(input: string): string {
+    return input.replace(/<[^>]*>/g, '').trim();
+}
+
 export default async function Projects() {
     const projects = await getAllProjects();
     const tags = await getAllTags();
@@ -24,7 +28,9 @@ export default async function Projects() {
             .map((value) => Number.parseInt(value.trim(), 10))
             .filter((value) => Number.isInteger(value))
             .map((tagId) => tagTitleById.get(tagId))
-            .filter((title): title is string => Boolean(title));
+            .filter((title): title is string => Boolean(title))
+            .map((title) => title);
+
 
     return <>
         <div className="blogTitle">
@@ -42,11 +48,13 @@ export default async function Projects() {
     </div>
 
     {
+        
         projects.map((project) =>
             <ProjectSquareLayout
                 key={project.id}
                 image={project.project_image}
                 contentTitle={project.project_title}
+                routeLink={stripHtml(project.project_link)}
                 tags={getTagTitlesForProject(project.tag_list)}
             />
         )

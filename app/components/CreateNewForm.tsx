@@ -9,7 +9,7 @@ import TagSection from "./TagSection";
 import BlogEditor from "./TextEditorComponent";
 
 const TITLE_MAX = 200;
-const CONTENT_MAX = 10_000;
+const CONTENT_MAX = 10_000_000;
 
 export type CreateNewFormPayload = {
   formType: string;

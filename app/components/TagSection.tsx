@@ -46,13 +46,15 @@ export default function TagSection({ tagType, displayCreateNewTag, onTagSelect }
 
     return (
         <div className="TagSection-container">
-            {tags.map((tag) => (
-                <TagItem
-                    key={tag.id ?? `${tag.tag_title}-${tag.tag_type}`}
-                    tag={tag}
-                    onClick={onTagSelect}
-                />
-            ))}
+            <div className="TagSection-items">
+                {tags.map((tag) => (
+                    <TagItem
+                        key={tag.id ?? `${tag.tag_title}-${tag.tag_type}`}
+                        tag={tag}
+                        onClick={onTagSelect}
+                    />
+                ))}
+            </div>
             {loadError ? <p role="alert">{loadError}</p> : null}
             {displayCreateNewTag && <CreateNewTag tagType={tagType} />}
         </div>

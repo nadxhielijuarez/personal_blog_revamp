@@ -1,0 +1,64 @@
+#blogTitle-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+}
+
+.blogTitle{
+    font-family: 'Cormorant Garamond', serif;
+    display: grid;
+    grid-template-columns: minmax(0, 68%) minmax(0, 32%);
+    align-items: center;
+    column-gap: clamp(0.75rem, 2vw, 2rem);
+    margin-left: 50px;
+}
+
+.blogTitle-text{
+    font-family: 'Cormorant Garamond', serif;
+    display:block;
+    font-size: clamp(2.5rem, 8vw, 10rem);
+    font-weight: 300;
+    line-height: 1.05;
+    margin: auto 3rem;
+    margin-top: 10%;
+    max-width: 95%;
+}
+
+
+.blogTitle-column{
+    position: relative;
+    min-width: 0;
+}
+
+.blogTitle-column:first-child{
+    z-index: 2;
+}
+
+.blogTitle-column:last-child{
+    z-index: 1;
+}
+
+.BlogImageContainer{
+    position: relative;
+    width: 100%;
+    margin-inline: auto;
+}
+
+.BlogImage{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .blogTitle{
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+}

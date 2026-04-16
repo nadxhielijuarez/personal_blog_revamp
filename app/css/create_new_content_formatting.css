@@ -149,6 +149,4 @@
 
 .tag-item-container:hover{
     background-color: #290300;
-    transform: translateY(-2px) scale(1.03);
-    margin: 1rem;
 }

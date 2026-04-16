@@ -3,6 +3,7 @@ import type { CreateNewTagPayload } from "@/app/components/CreateNewTag";
 
 export type Tag = {
     id?: number;
+    tag_id?: number;
     tag_title: string;
     tag_type: string;
 }

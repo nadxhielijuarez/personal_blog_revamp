@@ -5,9 +5,27 @@ import Image from 'next/image';
 import blog_image from '../images/projects_image.png';
 import TagSection from '../components/TagSection';
 import {getAllProjects} from '@/lib/db/project';
+import {getAllTags} from '@/lib/db/tag';
 
 export default async function Projects() {
     const projects = await getAllProjects();
+    const tags = await getAllTags();
+    const tagTitleById = new Map<number, string>();
+    tags.forEach((tag) => {
+        const tagId = tag.tag_id ?? tag.id;
+        if (typeof tagId === 'number') {
+            tagTitleById.set(tagId, tag.tag_title);
+        }
+    });
+
+    const getTagTitlesForProject = (tagList: string): string[] =>
+        tagList
+            .split(',')
+            .map((value) => Number.parseInt(value.trim(), 10))
+            .filter((value) => Number.isInteger(value))
+            .map((tagId) => tagTitleById.get(tagId))
+            .filter((title): title is string => Boolean(title));
+
     return <>
         <div className="blogTitle">
         <div className="blogTitle-column">
@@ -29,10 +47,7 @@ export default async function Projects() {
                 key={project.id}
                 image={project.project_image}
                 contentTitle={project.project_title}
-                tags={project.tag_list
-                    .split(",")
-                    .map((tag) => tag.trim())
-                    .filter(Boolean)}
+                tags={getTagTitlesForProject(project.tag_list)}
             />
         )
     }

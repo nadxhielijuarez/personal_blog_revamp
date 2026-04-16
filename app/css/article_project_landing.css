@@ -143,6 +143,7 @@
     margin: 0 auto;
     padding-inline: 1rem;
     box-sizing: border-box;
+    margin-bottom: 2rem;
 }
 
 .BlogCardDisplay-ContentTitle{

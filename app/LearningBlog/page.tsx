@@ -47,6 +47,7 @@ export default async function LearningBlog() {
             displayCreateNewTag={false}
             />
 
+            <div className="BlogCardDisplay-container">
         {posts.map((post) => (
             <BlogCardDisplay
                 key={post.id ?? `${post.blog_post_title}-${post.date_published}`}
@@ -58,5 +59,6 @@ export default async function LearningBlog() {
                 DatePosted={new Date(post.date_published).toLocaleDateString()}
             />
         ))}
+        </div>
     </>
 }

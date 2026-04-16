@@ -1,7 +1,8 @@
 import React, { JSX } from 'react';
 import Navbar from '../components/Navbar';
 import '../css/article_project_landing.css';
-import '../css/original.css';
+import '../css/original.css'; 
+import Footer from '../components/Footer';
 
 export default function RootLayout({
     children,
@@ -12,6 +13,7 @@ export default function RootLayout({
         <div className="Resume-container">
             <Navbar />
             {children}
+            <Footer />
         </div>
     );
 }

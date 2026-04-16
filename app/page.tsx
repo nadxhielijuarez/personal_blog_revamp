@@ -4,6 +4,7 @@ import Intro from './components/Intro';
 import './css/original.css';
 import React, { JSX } from 'react';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 export default function Home(): JSX.Element {
   return (
@@ -12,6 +13,7 @@ export default function Home(): JSX.Element {
       <Intro />
       <CardSection />
       <HobbiesSection />
+      <Footer />
     </div>
   );
 }

@@ -372,4 +372,29 @@ h1{
 	border-radius: 8px;
 }
 
+.footer-container{
+	background-color: #592A2A;
+	padding: 1rem;
+}
+
+.footer-content{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	width: 100%;
+}
+
+.footer-content a{
+	color: white;
+	text-decoration: none;
+}
+
+.footer-social-image {
+	display: block;
+	width: clamp(2.75rem, 10vw, 4rem);
+	height: clamp(2.75rem, 10vw, 4rem);
+	object-fit: contain;
+}
+
 

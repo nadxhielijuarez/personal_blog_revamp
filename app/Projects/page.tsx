@@ -47,6 +47,7 @@ export default async function Projects() {
         </div>
     </div>
 
+    <div className="Projects-container">
     {
         
         projects.map((project) =>
@@ -59,6 +60,6 @@ export default async function Projects() {
             />
         )
     }
-   
+    </div>
     </>
 }

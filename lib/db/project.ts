@@ -35,3 +35,16 @@ export async function createProject(project: Project): Promise<Project> {
     throw new Error(`Failed to insert project: ${error}`);
   }
 }
+
+
+
+export async function getAllProjects(): Promise<Project[]> {
+  try {
+    const text = "SELECT * FROM project ORDER BY project_title ASC";
+    const rows = await db.query(text);
+    return (rows ?? []) as Project[];
+  } catch (error) {
+    console.error(error);
+    throw new Error(`Failed to fetch projects: ${error}`);
+  }
+}

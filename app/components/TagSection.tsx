@@ -7,7 +7,7 @@ import TagItem from './TagItem';
 import { fetchAllTags } from './actions/Tag.actions';
 
 type TagSectionProps = {
-    tagType: string | string[];
+    tagType: string;
     displayCreateNewTag: boolean;
     tagIDs?: number[];
     onTagSelect?: (tagTitle: string) => void;
@@ -57,7 +57,7 @@ export default function TagSection({ tagType, displayCreateNewTag, onTagSelect }
                 ))}
             </div>
             {loadError ? <p role="alert">{loadError}</p> : null}
-            {displayCreateNewTag && <CreateNewTag tagType={String(tagType)} />}
+            {displayCreateNewTag && <CreateNewTag tagType={tagType} />}
         </div>
     )
 }

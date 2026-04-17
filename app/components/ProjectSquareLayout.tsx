@@ -21,7 +21,7 @@ export default function ProjectSquareLayout({
     const SqureContent = (
         <>
         <div className="ProjectSquareLayout">
-            <img className="ProjectSquareLayoutImage" src={imageSrc}  alt={imageTitle} />
+            <img className="ProjectSquareLayoutImage" src={imageSrc}/>
             <div className= "ProjectSquareLayout-ContentTitle">{contentTitle}</div>
             <CardTagList tags={tags} className="ProjectSquareLayout-Tags" />
         </div>

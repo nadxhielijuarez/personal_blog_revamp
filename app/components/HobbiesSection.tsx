@@ -55,7 +55,7 @@ export default function HobbiesSection(): JSX.Element {
         />
 
         <Hobbie
-          title="Foodie - Restruants"
+          title="Foodie - Restaurants"
           subtitle="I really enjoy a nice restaurant meal. Plus if its fine dining, its a great way to treat yourself."
           thumbnail="https://img.icons8.com/?size=100&id=88539&format=png&color=000000"
         />

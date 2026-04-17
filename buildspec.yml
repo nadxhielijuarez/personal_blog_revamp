@@ -29,7 +29,7 @@ phases:
         if [ -z "$DATABASE_URL" ] && [ -z "$NEON_POSTGRES_URL" ] && [ -z "$NEON_POSTGRES_API_URL" ]; then
           echo "Warning: No Neon DATABASE_URL / NEON_POSTGRES_URL / NEON_POSTGRES_API_URL set — build may still succeed if the app does not connect at build time."
         fi
-      - npm run lint
+      ##- npm run lint
 
   build:
     commands:

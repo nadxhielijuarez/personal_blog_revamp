@@ -8,11 +8,11 @@ export type User = {
   role: number;
 }
 
-export async function createUser(user: User) {
-  const { user_name, email, role } = user;
-  const result = await insertEntity<User>("users", { user_name, email, role });
-  return result;
-}
+// export async function createUser(user: User) {
+//   const { user_name, email, role } = user;
+//   const result = await insertEntity<User>("users", { user_name, email, role });
+//   return result;
+// }
 
 
 

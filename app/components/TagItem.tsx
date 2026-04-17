@@ -6,17 +6,17 @@ type Tag = {
 
 type TagItemProps = {
     tag: Tag;
-    onClick?: (tagTitle: string) => void;
+    onClick?: (tagID: number) => void;
 };
 
 export default function TagItem({ tag, onClick }: TagItemProps) {
     const handleClick = () => {
-        onClick?.(tag.tag_id);
+        onClick?.(tag.tag_id ?? 0);
     };
 
     return (
         <button type="button" className="tag-item-container" onClick={handleClick}>
-            <span className="tag-item-title">{tag.tag_title}</span>
+            <span className="tag-item-title">{tag.tag_title ?? ''}</span>
         </button>
     )
 }

@@ -57,7 +57,7 @@ export default function TagSection({ tagType, displayCreateNewTag, onTagSelect }
                 ))}
             </div>
             {loadError ? <p role="alert">{loadError}</p> : null}
-            {displayCreateNewTag && <CreateNewTag tagType={tagType} />}
+            {displayCreateNewTag && <CreateNewTag tagType={String(tagType)} />}
         </div>
     )
 }

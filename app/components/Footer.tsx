@@ -1,8 +1,8 @@
 import React, { JSX } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import LinkedInIcon from "@/app/images/linkedIn.png";
-import GitHubIcon from "@/app/images/github.png";
+import { ImLinkedin } from "react-icons/im";
+import { DiGithubBadge } from "react-icons/di";
 import "../css/original.css";
 
 export default function Footer(): JSX.Element {
@@ -10,23 +10,12 @@ export default function Footer(): JSX.Element {
     <div className="footer-container" id="myFooter">
       <div className="footer-content">
       <Link href="https://www.linkedin.com/in/nadxhieli-juarez-6b3595191/">
-        <Image
-          className="footer-social-image"
-          src={LinkedInIcon}
-          alt="LinkedIn"
-          width={64}
-          height={64}
-        />
+        <ImLinkedin className="footer-social-image" />
       </Link>
 
       <Link href="https://github.com/nadxhielijuarez">
-        <Image
-          className="footer-social-image"
-          src={GitHubIcon}
-          alt="GitHub"
-          width={64}
-          height={64}
-        />
+        <DiGithubBadge className="footer-social-image" />
+
       </Link>
       </div>
 

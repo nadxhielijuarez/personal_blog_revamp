@@ -52,7 +52,7 @@ export default function TagSection({ tagType, displayCreateNewTag, onTagSelect }
                     <TagItem
                         key={tag.id ?? `${tag.tag_title}-${tag.tag_type}`}
                         tag={tag}
-                        onClick={onTagSelect}
+                        onClick={(tagID) => onTagSelect?.(String(tagID))}
                     />
                 ))}
             </div>

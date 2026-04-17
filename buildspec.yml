@@ -20,7 +20,6 @@ phases:
       nodejs: 20
     commands:
       - echo "Node $(node -v) / npm $(npm -v)"
-      - cd website_clone
       - npm ci
 
   pre_build:
@@ -34,7 +33,6 @@ phases:
 
   build:
     commands:
-      - cd website_clone
       - npm run build
 
   post_build:
@@ -42,12 +40,11 @@ phases:
       - echo "Build finished."
 
 artifacts:
-  base-directory: website_clone
   files:
     - "**/*"
   name: next-build-$(date +%Y-%m-%d)
 
 cache:
   paths:
-    - "website_clone/node_modules/**/*"
+    - "node_modules/**/*"
     - "~/.npm/**/*"

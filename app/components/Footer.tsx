@@ -1,9 +1,8 @@
 import React, { JSX } from 'react';
-// import { FaBars } from 'react-icons/fa';
 import Link from 'next/link';
 import Image from 'next/image';
-import LinkedInIcon from "../images/linkedIn.png";
-import GitHubIcon from "../images/github.png";
+import LinkedInIcon from "@/app/images/linkedIn.png";
+import GitHubIcon from "@/app/images/github.png";
 import "../css/original.css";
 
 export default function Footer(): JSX.Element {

@@ -52,11 +52,11 @@ export default async function Projects() {
         
         projects.map((project) =>
             <ProjectSquareLayout
-                key={project.id}
-                image={project.project_image}
-                contentTitle={project.project_title}
-                routeLink={stripHtml(project.project_link)}
-                tags={getTagTitlesForProject(project.tag_list)}
+                key={project.id || ''}
+                image={project.project_image || ''}
+                contentTitle={project.project_title || ''}
+                routeLink={stripHtml(project.project_link || '')}
+                tags={getTagTitlesForProject(project.tag_list || '')}
             />
         )
     }

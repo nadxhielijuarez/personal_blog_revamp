@@ -25,18 +25,14 @@ phases:
   pre_build:
     commands:
       # Fail fast if required env names are missing (values come from CodeBuild env)
-      - |
-        if [ -z "NEXT_PUBLIC_NEON_AUTH_URL" ]; then
-          echo "Warning: No Neon DATABASE_URL set — build may still succeed if the app does not connect at build time."
-        
-        if [ -z "NEON_POSTGRES_URL" ]; then
-          echo "Warning: No Neon NEON_POSTGRES_URL set — build may still succeed if the app does not connect at build time."
-        
-        if [ -z "NEON_POSTGRES_API_URL" ]; then
-          echo "Warning: No Neon NEON_POSTGRES_URL set — build may still succeed if the app does not connect at build time."
-        
-        
-      ##- npm run lint
+      - echo "=== Environment Variables Debug ==="
+      - echo "NEXT_PUBLIC_NEON_AUTH_URL value: '$NEXT_PUBLIC_NEON_AUTH_URL'"
+      - echo "NEXT_PUBLIC_NEON_AUTH_URL length: ${#NEXT_PUBLIC_NEON_AUTH_URL}"
+      - echo "NEXT_PUBLIC_NEON_AUTH_URL value: '$NEXT_PUBLIC_NEON_AUTH_URL'"
+      - echo "NEXT_PUBLIC_NEON_AUTH_URL length: ${#NEXT_PUBLIC_NEON_AUTH_URL}"
+      - printenv | grep -i neon || echo "No neon variables found"
+      - echo "=== End Debug ==="
+
 
   build:
     commands:

@@ -6,12 +6,12 @@ type Tag = {
 
 type TagItemProps = {
     tag: Tag;
-    onClick?: (tagID: number) => void;
+    onClick?: (tagID: string) => void;
 };
 
 export default function TagItem({ tag, onClick }: TagItemProps) {
     const handleClick = () => {
-        onClick?.(tag.tag_id ?? 0);
+        onClick?.(String(tag.tag_id ?? ""));
     };
 
     return (

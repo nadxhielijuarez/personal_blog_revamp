@@ -25,7 +25,6 @@ phases:
 
   pre_build:
     commands:
-      - cd website_clone
       # Fail fast if required env names are missing (values come from CodeBuild env)
       - |
         if [ -z "$DATABASE_URL" ] && [ -z "$NEON_POSTGRES_URL" ] && [ -z "$NEON_POSTGRES_API_URL" ]; then

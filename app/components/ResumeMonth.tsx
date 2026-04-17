@@ -16,7 +16,7 @@ type ResumeMonthProps = {
     return (
       <div
         className={`ResumeMonth-container${filled ? " ResumeMonth-container--filled" : ""}`}
-        aria-label={month ?? "month block"}
+        aria-label={month !== undefined ? `Month ${month}` : "Month"}
       >
         {showText ? (
             <div className="ResumeMonth-text">

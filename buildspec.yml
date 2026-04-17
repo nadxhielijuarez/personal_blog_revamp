@@ -1,0 +1,54 @@
+# AWS CodeBuild — Next.js app in `website_clone`
+#
+# Configure these in the CodeBuild project (or SSM/Secrets Manager), not in this file:
+#   Neon:        NEON_POSTGRES_URL or DATABASE_URL (or NEON_POSTGRES_API_URL if you use that)
+#   UploadThing: UPLOADTHING_SECRET, UPLOADTHING_APP_ID, and any NEXT_PUBLIC_* vars your app reads
+#
+# Quill, @neondatabase/serverless, uploadthing, etc. are installed via npm — no extra install phase.
+
+version: 0.2
+
+env:
+  variables:
+    # Use non-interactive installs in CI
+    CI: "true"
+
+phases:
+  install:
+    runtime-versions:
+      # Use an image that supports this (e.g. aws/codebuild/standard:7.0). Change to 22 if your project requires it.
+      nodejs: 20
+    commands:
+      - echo "Node $(node -v) / npm $(npm -v)"
+      - cd website_clone
+      - npm ci
+
+  pre_build:
+    commands:
+      - cd website_clone
+      # Fail fast if required env names are missing (values come from CodeBuild env)
+      - |
+        if [ -z "$DATABASE_URL" ] && [ -z "$NEON_POSTGRES_URL" ] && [ -z "$NEON_POSTGRES_API_URL" ]; then
+          echo "Warning: No Neon DATABASE_URL / NEON_POSTGRES_URL / NEON_POSTGRES_API_URL set — build may still succeed if the app does not connect at build time."
+        fi
+      - npm run lint
+
+  build:
+    commands:
+      - cd website_clone
+      - npm run build
+
+  post_build:
+    commands:
+      - echo "Build finished."
+
+artifacts:
+  base-directory: website_clone
+  files:
+    - "**/*"
+  name: next-build-$(date +%Y-%m-%d)
+
+cache:
+  paths:
+    - "website_clone/node_modules/**/*"
+    - "~/.npm/**/*"

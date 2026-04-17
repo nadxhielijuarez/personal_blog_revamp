@@ -26,7 +26,7 @@ phases:
     commands:
       # Fail fast if required env names are missing (values come from CodeBuild env)
       - |
-        if [ -z "$DATABASE_URL" ] && [ -z "$NEON_POSTGRES_URL" ] && [ -z "$NEON_POSTGRES_API_URL" ]; then
+        if [ -z "$DATABASE_URL" ] && [ -z "$NEON_POSTGRES_URL" ]; then
           echo "Warning: No Neon DATABASE_URL / NEON_POSTGRES_URL / NEON_POSTGRES_API_URL set — build may still succeed if the app does not connect at build time."
         fi
       ##- npm run lint

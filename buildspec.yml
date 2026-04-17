@@ -26,13 +26,13 @@ phases:
     commands:
       # Fail fast if required env names are missing (values come from CodeBuild env)
       - |
-        if [ -z "$NEXT_PUBLIC_NEON_AUTH_URL" ]; then
+        if [ -z "NEXT_PUBLIC_NEON_AUTH_URL" ]; then
           echo "Warning: No Neon DATABASE_URL set — build may still succeed if the app does not connect at build time."
-        exit 1
-        if [ -z "$NEON_POSTGRES_URL" ]; then
+        
+        if [ -z "NEON_POSTGRES_URL" ]; then
           echo "Warning: No Neon NEON_POSTGRES_URL set — build may still succeed if the app does not connect at build time."
         exit 1
-        if [ -z "$NEON_POSTGRES_API_URL" ]; then
+        if [ -z "NEON_POSTGRES_API_URL" ]; then
           echo "Warning: No Neon NEON_POSTGRES_URL set — build may still succeed if the app does not connect at build time."
         exit 1
         

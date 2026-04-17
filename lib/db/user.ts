@@ -1,4 +1,4 @@
-import { db, insertEntity } from "./client";
+import { db } from "./client";
 import { neon } from "@neondatabase/serverless";
 
 export type User = {

@@ -11,11 +11,11 @@ const TAG_TITLE_MAX = 200;
 
 export type CreateNewTagPayload = {
     tagTitle: string;
-    tagType: string[];
+    tagType: string;
 }
 
 type CreateNewTagProps = {
-    tagType: string[];
+    tagType: string;
 }
 
 export default function CreateNewTag({ tagType }: CreateNewTagProps) {

@@ -5,7 +5,6 @@ import CardTagList from './CardTagList';
 
 type ProjectSquareLayout = {
     image: string | StaticImageData;
-    imageTitle: string;
     contentTitle: string;
     routeLink?: string;
     tags?: string[];
@@ -13,7 +12,6 @@ type ProjectSquareLayout = {
 
 export default function ProjectSquareLayout({
     image, 
-    imageTitle,
     contentTitle,
     routeLink,
     tags = [],

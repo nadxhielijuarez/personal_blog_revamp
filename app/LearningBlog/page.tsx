@@ -6,6 +6,9 @@ import { getAllBlogPosts } from "@/lib/db/blog_post";
 import { getAllTags } from "@/lib/db/tag";
 import LearningBlogPageClient, { type LearningBlogPostRow } from "./LearningBlogPageClient";
 
+/** Avoid running Neon queries during `next build` static generation. */
+export const dynamic = "force-dynamic";
+
 function parseTagIdsFromList(tagList: string): number[] {
   return tagList
     .split(",")
@@ -61,7 +64,7 @@ export default async function LearningBlog() {
         </div>
         <div className="blogTitle-column">
           <div className="BlogImageContainer">
-            <Image className="BlogImage" src={blog_image} alt="Personal Website" />
+            <Image className="BlogImage" src={blog_image} alt="Personal Website"  loading="eager"  />
           </div>
         </div>
       </div>

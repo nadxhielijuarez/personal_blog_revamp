@@ -8,6 +8,9 @@ type BlogArticlePageProps = {
     searchParams?: Promise<{ postId?: string }>;
 };
 
+/** Avoid running Neon queries during `next build` static generation. */
+export const dynamic = "force-dynamic";
+
 export default async function BlogArticlePage({ searchParams }: BlogArticlePageProps) {
     const params = await searchParams;
     const postId = Number(params?.postId);

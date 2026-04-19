@@ -25,7 +25,8 @@ export default function Resume(): JSX.Element {
         Download CV
       </a>
       <ResumeYear year={2025} 
-      month_data={ [{
+      month_data={ [{ 
+        showText : true,
         length : 12,
         job_title : 'Software Developer III',
         company : 'Paycom',
@@ -39,7 +40,10 @@ export default function Resume(): JSX.Element {
 
   <ResumeYear year={2024} 
       month_data={
-        [{length : 12,
+        [{
+          showText : false,
+          filled : true,
+          length : 12,
           job_title : 'Software Developer II',
           company : 'Paycom',
           location : 'Irving, Texas',
@@ -54,7 +58,9 @@ export default function Resume(): JSX.Element {
 
   <ResumeYear year={2023} 
       month_data={
-        [{filled : true,
+        [{  
+          showText : true,
+          filled : true,
           length : 5,
           job_title : 'Software Developer II',
           company : 'Paycom',
@@ -62,7 +68,9 @@ export default function Resume(): JSX.Element {
           duration_start : 'Jun. 2023',
           duration_end : 'Aug. 2023',
         },
-          {filled : false,
+          {
+            showText : false,
+            filled : false,
             length : 1,
             job_title : '',
             company : '',
@@ -70,7 +78,9 @@ export default function Resume(): JSX.Element {
             duration_start : '',
             duration_end : '',
           },
-          {filled : true,
+          {
+            showText : true,
+            filled : true,
             length : 6,
             job_title : 'Undergrad TA',
             company : 'Texas A&M University',
@@ -85,16 +95,9 @@ export default function Resume(): JSX.Element {
 
   <ResumeYear year={2022} 
       month_data={
-          [{
-            filled : true,
-            length : 2,
-            job_title : 'Software Engineering Intern (QA automation)',
-            company : 'Roku',
-            location : 'Austin, TX',
-            duration_start : 'May 2022',
-            duration_end : 'August 2022',
-          },
-            {
+          [
+            {   
+              showText : false,
               filled : false,
               length : 2,
               job_title : '',
@@ -103,8 +106,28 @@ export default function Resume(): JSX.Element {
               duration_start : '',
               duration_end : '',
 
+            },{
+            showText : true,
+            filled : true,
+            length : 2,
+            job_title : 'Software Engineering Intern (QA automation)',
+            company : 'Roku',
+            location : 'Austin, TX',
+            duration_start : 'May 2022',
+            duration_end : 'August 2022',
+          },
+            { 
+              showText : true,
+              filled : false,
+              length : 4,
+              job_title : '',
+              company : '',
+              location : '',
+              duration_start : '',
+              duration_end : '',
             },
-          {
+          { 
+            showText : false,
             filled : true,
             length : 4,
             job_title : 'Software Developer (Part-time)',
@@ -112,15 +135,6 @@ export default function Resume(): JSX.Element {
             location : 'Bryan, Tx',
             duration_start : 'Sept. 2021',
             duration_end : 'Feb. 2022',
-          },
-          {
-            filled : false,
-            length : 4,
-            job_title : '',
-            company : '',
-            location : '',
-            duration_start : '',
-            duration_end : '',
           }
         ]} 
       Recent={false}
@@ -132,25 +146,8 @@ export default function Resume(): JSX.Element {
       description="Not sure how to describe things on here yet." 
       achievements={[]} 
       month_data={ [
-        {
-          filled : true,
-          length : 7,
-          job_title : 'Software Engineering Intern (co-op)',
-          company : 'WilliamsRDM',
-          location : 'Fort Worth, Tx',
-          duration_start : 'Jan. 2021',
-          duration_end : 'Jul. 2021',
-        },
-        {
-          filled : true,
-          length : 1,
-          job_title : 'Student IT',
-          company : 'Texas A&M University Veterinary Medical Diagnostic Lab',
-          location : 'Bryan, Tx',
-          duration_start : 'Jul. 2021',
-          duration_end : 'Sept. 2021',
-        },
           {
+          showText : true,
           filled : true,
           length : 4,
           job_title : 'Software Developer (Part-time)',
@@ -159,6 +156,26 @@ export default function Resume(): JSX.Element {
           duration_start : 'Sept. 2021',
           duration_end : 'Feb. 2022',
         },
+        { 
+          showText : true,
+          filled : true,
+          length : 1,
+          job_title : 'Student IT',
+          company : 'Texas A&M University Veterinary Medical Diagnostic Lab',
+          location : 'Bryan, Tx',
+          duration_start : 'Jul. 2021',
+          duration_end : 'Sept. 2021',
+        },
+        {
+          showText : true,
+          filled : true,
+          length : 7,
+          job_title : 'Software Engineering Intern (co-op)',
+          company : 'WilliamsRDM',
+          location : 'Fort Worth, Tx',
+          duration_start : 'Jan. 2021',
+          duration_end : 'Jul. 2021',
+        },
       ] } 
       Recent={false}
       image={img2}
@@ -166,7 +183,8 @@ export default function Resume(): JSX.Element {
   
   <ResumeYear year={2020} 
       month_data={ [
-        {
+        { 
+          showText : true,
           filled : true,
           length : 5,
           job_title : 'Owner',
@@ -175,17 +193,19 @@ export default function Resume(): JSX.Element {
           duration_start : 'Aug. 2020',
           duration_end : 'Dec. 2020',
         },
-        {
+        { 
+          showText : true,
           filled : true,
           length : 3,
           job_title : 'Free-Lance Web Developer',
           company : 'Freelance',
-          location : 'Bryan, Tx',
+          location : 'Weslaco, Tx',
           duration_start : 'May. 2020',
           duration_end : 'Jul. 2020',
         },
         {
-          filled : true,
+          showText : true,
+          filled : false,
           length : 5,
           job_title : 'Energy Data Analyst (Student)',
           company : 'TAMU Engineering Extension - Energy Systems Lab',
@@ -200,7 +220,8 @@ export default function Resume(): JSX.Element {
 
 <ResumeYear year={2019} 
       month_data={ [
-        {
+        {   
+          showText : true,
           filled : true,
           length : 4,
           job_title : 'Energy Data Analyst (Student)',

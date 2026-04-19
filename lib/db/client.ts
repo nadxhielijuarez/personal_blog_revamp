@@ -7,7 +7,6 @@ export type BaseEntity = {
 
 
 export function getPostgresConnectionString(): string {
-  console.log(process.env.NEON_POSTGRES_URL);
   const url =
     process.env.NEON_POSTGRES_URL?.trim() ||
     process.env.NEON_POSTGRES_API_URL?.trim();

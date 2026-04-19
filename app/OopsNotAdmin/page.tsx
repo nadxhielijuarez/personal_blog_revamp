@@ -1,6 +1,3 @@
-import Link from "next/link";
-import React from "react";
-import { requireAdminUser } from "@/lib/auth/requireAdmin";
 import "../css/original.css";
 export default function OopsNotAdminPage() {
     return (

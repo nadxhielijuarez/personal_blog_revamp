@@ -73,7 +73,7 @@ export default function CreateNewTag({ tagType }: CreateNewTagProps) {
                 onClick={openPopup}
                 aria-label="Create new tag"
             >
-                <Image className="CreateNewTag-image" src={addNew} alt="Add New" />
+                <Image className="CreateNewTag-image" src={addNew} alt="Add New" loading="eager" />
             </button>
 
             {isPopupOpen && (

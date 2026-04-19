@@ -68,7 +68,7 @@ export default function LearningBlogPageClient({ posts }: LearningBlogPageClient
           imageTitle={post.blog_post_title}
           contentTitle={post.blog_post_title}
           tags={post.displayTags}
-            DatePosted={new Date(post.date_published).toLocaleDateString()}
+            DatePosted={new Date(post.date_published).toLocaleDateString('en-US', { timeZone: 'UTC' }).toString()}
           />
         ))}
       </div>

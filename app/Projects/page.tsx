@@ -7,6 +7,9 @@ import TagSection from '../components/TagSection';
 import {getAllProjects} from '@/lib/db/project';
 import {getAllTags} from '@/lib/db/tag';
 
+/** Avoid running Neon queries during `next build` static generation. */
+export const dynamic = "force-dynamic";
+
 function stripHtml(input: string): string {
     return input.replace(/<[^>]*>/g, '').trim();
 }
@@ -42,7 +45,7 @@ export default async function Projects() {
         </div>
         <div className="blogTitle-column">
             <div className="BlogImageContainer">
-            <Image className="BlogImage" src={blog_image} alt="Personal Website" />
+            <Image className="BlogImage" src={blog_image} alt="Personal Website" loading="eager" />
             </div>
         </div>
     </div>

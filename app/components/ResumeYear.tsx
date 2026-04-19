@@ -5,6 +5,7 @@ import ResumeMonth from './ResumeMonth';
 import { StaticImageData } from 'next/image';
 
 export type MonthData = {
+    showText: boolean;
     filled?: boolean;
     length: number;
     job_title?: string;
@@ -36,7 +37,7 @@ export default function ResumeYear({
           const filled = segment.filled ?? true;
           return Array.from({ length: safeLength }, (_, i) => ({
             filled,
-            showText: i === 0 && filled, // only first month in segment
+            showText: i === 0 && filled && segment.showText, // only first month in segment
             job_title: segment.job_title ?? "",
             company: segment.company ?? "",
             location: segment.location ?? "",

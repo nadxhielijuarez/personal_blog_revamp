@@ -32,13 +32,26 @@ export default async function BlogArticlePage({ searchParams }: BlogArticlePageP
             tag_list: '',
             blog_image: ''
         }
-    }
+    } 
+    const text = post?.blog_content ?? "";
+    const cleanText = text.replace(/^\xa0*([^\xa0]*)\xa0*$/g, "");
+
+    const translate_re = /&(nbsp|amp|quot|lt|gt);/g;
+    const translate: Record<string, string> = {
+        nbsp: " ",
+        amp: "&",
+        quot: '"',
+        lt: "<",
+        gt: ">",
+    };
 
     return (
         <>
           <BlogArticle 
           title={post?.blog_post_title || 'Sorry! Check your URL'}
-          content={post?.blog_content || 'Looks like the post you are looking for does not exist, or has been deleted.'}
+          content={post?.blog_content ? 
+                post?.blog_content.replace(translate_re, (full, entity) => translate[entity] ?? full) 
+                : 'Looks like the post you are looking for does not exist, or has been deleted.'}
           date={new Date(post?.date_published || new Date()).toLocaleDateString()}
           tags={post?.tag_list.split(',').map((tag) => tag.trim()).filter(Boolean) || []}
           image={post?.blog_image || ''} />

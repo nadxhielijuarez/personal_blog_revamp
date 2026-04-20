@@ -1,5 +1,6 @@
+"use client";
 import Image from 'next/image';
-import React, { JSX } from 'react';
+import React, { JSX, useEffect, useRef, useState } from 'react';
 import '../css/Resume.css';
 import ResumeYear from '../components/ResumeYear';
 import resume_section_placeholder from '../images/Nadxhieli_Juarez_Resume_Placeholder.png';
@@ -11,10 +12,20 @@ import img5 from '../images/img5.png';
 import img6 from '../images/img6.png';
 
 export default function Resume(): JSX.Element {
+
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      { threshold: 0.1 }
+    );
+    if (sectionRef.current) obs.observe(sectionRef.current);
+    return () => obs.disconnect();
+  }, []);
   return (
-    // Source - https://stackoverflow.com/a/74577710
-// Posted by dreambold, modified by community. See post 'Timeline' for change history
-// Retrieved 2026-04-16, License - CC BY-SA 4.0
+
 
     <div className="Resume">
       <a

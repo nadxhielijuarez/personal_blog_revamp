@@ -54,6 +54,9 @@
 	gap: 0;
 	z-index: 1;
 	pointer-events: none;
+		/* Raise --cascade-stagger for a slower, more dramatic cascade (e.g. 0.15s–0.22s). */
+		--cascade-stagger: 0.14s;
+		--cascade-duration: 2.1s;
 }
 
 .ResumeYear-content{
@@ -73,6 +76,40 @@
 	line-height: 1;
 	margin-left: 2%;
 }
+
+.ResumeYear-section .ResumeMonth-container {
+	opacity: 0;
+}
+
+.ResumeYear-section.visible .ResumeMonth-container {
+	animation: cascadeReveal 1.8s forwards;
+	animation: cascadeReveal var(--cascade-duration, 2.1s) forwards;
+}
+.ResumeYear-section.visible .ResumeYear-months > .ResumeMonth-container:nth-child(1) { animation-delay: calc(0 * var(--cascade-stagger)); }
+.ResumeYear-section.visible .ResumeYear-months > .ResumeMonth-container:nth-child(2) { animation-delay: calc(1 * var(--cascade-stagger)); }
+.ResumeYear-section.visible .ResumeYear-months > .ResumeMonth-container:nth-child(3) { animation-delay: calc(2 * var(--cascade-stagger)); }
+.ResumeYear-section.visible .ResumeYear-months > .ResumeMonth-container:nth-child(4) { animation-delay: calc(3 * var(--cascade-stagger)); }
+.ResumeYear-section.visible .ResumeYear-months > .ResumeMonth-container:nth-child(5) { animation-delay: calc(4 * var(--cascade-stagger)); }
+.ResumeYear-section.visible .ResumeYear-months > .ResumeMonth-container:nth-child(6) { animation-delay: calc(5 * var(--cascade-stagger)); }
+.ResumeYear-section.visible .ResumeYear-months > .ResumeMonth-container:nth-child(7) { animation-delay: calc(6 * var(--cascade-stagger)); }
+.ResumeYear-section.visible .ResumeYear-months > .ResumeMonth-container:nth-child(8) { animation-delay: calc(7 * var(--cascade-stagger)); }
+.ResumeYear-section.visible .ResumeYear-months > .ResumeMonth-container:nth-child(9) { animation-delay: calc(8 * var(--cascade-stagger)); }
+.ResumeYear-section.visible .ResumeYear-months > .ResumeMonth-container:nth-child(10) { animation-delay: calc(9 * var(--cascade-stagger)); }
+.ResumeYear-section.visible .ResumeYear-months > .ResumeMonth-container:nth-child(11) { animation-delay: calc(10 * var(--cascade-stagger)); }
+.ResumeYear-section.visible .ResumeYear-months > .ResumeMonth-container:nth-child(12) { animation-delay: calc(11 * var(--cascade-stagger)); }
+
+
+@keyframes cascadeReveal {
+	from {
+		opacity: 0;
+		transform: translateY(6px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
 
 .ResumeMonth-container{
 	width: 100%;

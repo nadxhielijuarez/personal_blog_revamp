@@ -1,8 +1,10 @@
-import React, { JSX } from 'react';
+"use client";
+
 import '../css/Resume.css';
 import Image from 'next/image';
 import ResumeMonth from './ResumeMonth';
 import { StaticImageData } from 'next/image';
+import { useEffect, useRef, useState } from 'react';
 
 export type MonthData = {
     showText: boolean;
@@ -30,38 +32,74 @@ export default function ResumeYear({
     month_data, 
     Recent
 }: ResumeYearProps) {
-        const totalMonths = 12;
-        const monthSlots = month_data
-        .flatMap((segment) => {
-          const safeLength = Math.max(0, Math.floor(segment.length));
-          const filled = segment.filled ?? true;
-          return Array.from({ length: safeLength }, (_, i) => ({
-            filled,
-            showText: i === 0 && filled && segment.showText, // only first month in segment
-            job_title: segment.job_title ?? "",
-            company: segment.company ?? "",
-            location: segment.location ?? "",
-            duration_start: segment.duration_start ?? "",
-            duration_end: segment.duration_end ?? "",
-          }));
-        })
-        .slice(0, totalMonths);
-      while (monthSlots.length < totalMonths) {
-        monthSlots.push({
-          filled: false,
-          showText: false,
-          job_title: "",
-          company: "",
-          location: "",
-          duration_start: "",
-          duration_end: "",
-        });
-      }
+  
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const inViewRef = useRef(false);
+  const lastScrollReplayRef = useRef(0);
+  const [visible, setVisible] = useState(false);
+  const [cascadeTick, setCascadeTick] = useState(0);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        inViewRef.current = entry.isIntersecting;
+        setVisible(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          lastScrollReplayRef.current = Date.now();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    if (sectionRef.current) obs.observe(sectionRef.current);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const SCROLL_REPLAY_MS = 550;
+    const onScroll = () => {
+      if (!inViewRef.current) return;
+      const now = Date.now();
+      if (now - lastScrollReplayRef.current < SCROLL_REPLAY_MS) return;
+      lastScrollReplayRef.current = now;
+      setCascadeTick((t) => t + 1);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  
+  const totalMonths = 12;
+  const monthSlots = month_data
+  .flatMap((segment) => {
+    const safeLength = Math.max(0, Math.floor(segment.length));
+    const filled = segment.filled ?? true;
+    return Array.from({ length: safeLength }, (_, i) => ({
+      filled,
+      showText: i === 0 && filled && segment.showText, 
+      job_title: segment.job_title ?? "",
+      company: segment.company ?? "",
+      location: segment.location ?? "",
+      duration_start: segment.duration_start ?? "",
+      duration_end: segment.duration_end ?? "",
+    }));
+  })
+  .slice(0, totalMonths);
+  while (monthSlots.length < totalMonths) {
+    monthSlots.push({
+      filled: false,
+      showText: false,
+      job_title: "",
+      company: "",
+      location: "",
+      duration_start: "",
+      duration_end: "",
+    });
+  }
     return (
-        <div className="ResumeYear-section">
+        <div ref={sectionRef} className={`ResumeYear-section ${visible ? 'visible' : ''}`}>
             <Image className="ResumeYear-image" src={image} alt="Year Resume Image" />
             <div className="ResumeYear-container">
                 <div
+                     key={cascadeTick}
                     className="ResumeYear-months"
                     aria-label="resume months"> 
                     {monthSlots.map((slot, index) => (

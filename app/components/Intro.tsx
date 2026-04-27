@@ -16,9 +16,11 @@ export default function Intro(): JSX.Element {
           </div>
 
           <div className="intro-row">
-            I am a Software Developer with experience building scalable systems,
-            modernizing codebases, and improving user experiences.
+            Hi! I'm Nadxhieli, or Nad for short. I'm a software developer with a strong passion for learning, and software development in general. 
+            I've been in the industry for a few years now, and I've learned a lot along the way. I've worked on a variety of projects, from small side projects to large scale enterprise applications. 
+            I like helping people out as much as I can and I'm always looking for new challenges and opportunities to grow in my career.
             <br />
+            Check out my Resume to learn a little more about my background and experience!
             <br />
           </div>
         </div>
@@ -31,8 +33,9 @@ export default function Intro(): JSX.Element {
       </div>
 
       <div className="intro-row-650">
-        I am a Software Developer with experience building scalable systems,
-        modernizing codebases, and improving user experiences.
+      Hi! I'm Nadxhieli, or Nad for short. I'm a software developer with a strong passion for learning, and software development in general. 
+            I've been in the industry for a few years now, and I've learned a lot along the way. I've worked on a variety of projects, from small side projects to large scale enterprise applications. 
+            I like helping people out as much as I can and I'm always looking for new challenges and opportunities to grow in my career.
         <br />
         <br />
       </div>

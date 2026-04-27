@@ -7,9 +7,10 @@ import "../css/original.css";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
+  { href: "/AboutMe", label: "About Me" },
   { href: "/Resume", label: "Resume" },
-  { href: "/Projects", label: "My Projects" },
-  { href: "/LearningBlog", label: "Learning Blog" },
+  { href: "/Projects", label: "Portfolio" },
+  { href: "/LearningBlog", label: "Learning" },
 ] as const;
 
 export default function Navbar(): JSX.Element {

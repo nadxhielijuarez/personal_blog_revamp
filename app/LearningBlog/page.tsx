@@ -58,7 +58,7 @@ export default async function LearningBlog() {
       <div className="blogTitle">
         <div className="blogTitle-column">
           <div id="blogTitle-container" className="vertical-line">
-            <div className="blogTitle-text">My Learning Blog</div>
+            <div className="blogTitle-text">Learning</div>
             <br />
           </div>
         </div>

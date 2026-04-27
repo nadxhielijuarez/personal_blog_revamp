@@ -36,10 +36,16 @@ export default function ResumeYear({
   const sectionRef = useRef<HTMLDivElement>(null);
   const inViewRef = useRef(false);
   const lastScrollReplayRef = useRef(0);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [cascadeTick, setCascadeTick] = useState(0);
 
   useEffect(() => {
+    if (typeof window === "undefined" || typeof IntersectionObserver === "undefined") {
+      // Keep content visible when observer APIs are unavailable.
+      setVisible(true);
+      return;
+    }
+
     const obs = new IntersectionObserver(
       ([entry]) => {
         inViewRef.current = entry.isIntersecting;

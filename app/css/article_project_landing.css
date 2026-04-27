@@ -103,7 +103,7 @@
 }
 
 .ProjectSquareLayout-ContentTitle{
-    font-family: "Gallient", sans-serif;
+    font-family: "Quicksand", sans-serif;
     font-size: 2rem;
     color: #ffff;
 }
@@ -149,7 +149,7 @@
 }
 
 .BlogCardDisplay-ContentTitle{
-    font-family: "Roboto", serif;
+    font-family: "Quicksand", sans-serif;
     font-size: clamp(1.25rem, 3.2vw, 2.5rem);
     text-align: center;
     width: 100%;
@@ -188,7 +188,7 @@
     border: 1px solid #885053;
     background: #592A2A;
     color: #ffffff;
-    font-family: "Roboto", serif;
+    font-family: "Quicksand", sans-serif;
     font-size: 0.95rem;
     line-height: 1;
 }

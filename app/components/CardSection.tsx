@@ -3,11 +3,12 @@ import ShowCaseCard from './ShowCaseCard';
 import Background1 from '../images/bg1.jpg';
 import Background3 from '../images/bg3.jpg';
 import Background4 from '../images/bg4.jpg';
+import Background5 from '../images/bg2.jpg';
 
 const cards: Array<{ image: StaticImageData; title: string; routeLink: string }> = [
   {
     image: Background1,
-    title: 'Projects',
+    title: 'Portfolio',
     routeLink: '/Projects',
   },
   {

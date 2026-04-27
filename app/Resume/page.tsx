@@ -101,7 +101,7 @@ export default function Resume(): JSX.Element {
           }
         ]} 
       Recent={false}
-      image={img5}
+      image={img1}
       />
 
   <ResumeYear year={2022} 
@@ -149,7 +149,7 @@ export default function Resume(): JSX.Element {
           }
         ]} 
       Recent={false}
-      image={img1}
+      image={img2}
     />
 
 <ResumeYear year={2021} 
@@ -189,7 +189,7 @@ export default function Resume(): JSX.Element {
         },
       ] } 
       Recent={false}
-      image={img2}
+      image={img1}
     />
   
   <ResumeYear year={2020} 
@@ -226,7 +226,7 @@ export default function Resume(): JSX.Element {
         },
       ] } 
       Recent={false}
-      image={img5}
+      image={img2}
     />
 
 <ResumeYear year={2019} 

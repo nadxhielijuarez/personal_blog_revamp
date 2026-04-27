@@ -161,7 +161,7 @@ h1{
 	text-align: left;
 	margin-top:70px;
 	margin-left:50px;
-	font-size: large;
+	font-size: clamp(1rem, 2vw, 2rem);
 	color:#564949;
 	font-family: 'Roboto';
 }

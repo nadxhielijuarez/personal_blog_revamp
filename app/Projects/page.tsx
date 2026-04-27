@@ -39,7 +39,7 @@ export default async function Projects() {
         <div className="blogTitle">
         <div className="blogTitle-column">
         <div id="blogTitle-container" className="vertical-line">
-            <div className="blogTitle-text">My Projects</div>
+            <div className="blogTitle-text">Portfolio</div>
             <br />
         </div>
         </div>

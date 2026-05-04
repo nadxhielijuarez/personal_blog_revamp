@@ -9,7 +9,7 @@ export function requireEnv(name: string): string {
 }
 
 export const auth = createNeonAuth({
-  baseUrl: process.env.NEON_AUTH_BASE_URL || requireEnv("NEXT_PUBLIC_NEON_AUTH_URL"),
+  baseUrl: process.env.NEON_AUTH_BASE_URL || requireEnv("NEXT_PUBLIC_NEON_AUTH_URL") || "http://localhost:3000",
   cookies: {
     secret: requireEnv("NEON_AUTH_COOKIE_SECRET"),
   },

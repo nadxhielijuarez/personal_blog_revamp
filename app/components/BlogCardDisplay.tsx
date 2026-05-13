@@ -25,16 +25,18 @@ export default function BlogCardDisplay({
     const resolvedRouteLink = routeLink ?? (id ? `/BlogArticlePage?postId=${id}` : undefined);
     const imageSrc = typeof image === "string" ? image : image.src;
     const squareContent = (
-        <div className="BlogCardDisplay">
-            <img className="BlogCardDisplayImage" src={imageSrc}  alt={imageTitle} />
-            <div className= "BlogCardDisplay-ContentTitle">{contentTitle}</div>
-            {DatePosted ? <div className="BlogCardDisplay-DatePosted">{DatePosted}</div> : null}
-            <CardTagList tags={tags} className="BlogCardDisplay-Tags" />
-        </div>
+        <article className="BlogCardDisplay">
+            <div className="BlogCardDisplayImageFrame">
+                <img className="BlogCardDisplayImage" src={imageSrc}  alt={imageTitle} />
+            </div>
+            <div className="BlogCardDisplay-Body">
+                <CardTagList tags={tags} className="BlogCardDisplay-Tags" />
+                <div className= "BlogCardDisplay-ContentTitle">{contentTitle}</div>
+                {DatePosted ? <div className="BlogCardDisplay-DatePosted">{DatePosted}</div> : null}
+            </div>
+        </article>
     );
     return (
-        <div className="BlogCardDisplay-container">
-            {resolvedRouteLink ? <Link href={resolvedRouteLink}>{squareContent}</Link> : squareContent}
-        </div>
+        resolvedRouteLink ? <Link className="BlogCardDisplay-link" href={resolvedRouteLink}>{squareContent}</Link> : squareContent
     );
 }
